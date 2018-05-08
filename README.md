@@ -9,3 +9,4 @@ vision_opencv: https://github.com/ros-perception/vision_opencv.git
 
 cv_bridge: http://wiki.ros.org/cv_bridge
 
+image_pipeline: https://github.com/ros-perception/image_pipeline (for calibration)
