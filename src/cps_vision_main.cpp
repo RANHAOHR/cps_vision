@@ -48,42 +48,83 @@ cv::Mat segmentation(cv::Mat &InputImg) {
 
 }
 
+bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
+	//cv::inRange(image, cv::Scalar(200, 0, 0), cv::Scalar(255,50,50), blueImage);   // 110, 150, 150   255, 0, 0
+	cv::inRange(image, cv::Scalar(0,100, 100), cv::Scalar(100,255,255), blueImage);
+	imshow("Image with only blue pixel", blueImage);
+	cout << "Total " << cv::countNonZero(blueImage) << "  blue pixels" << endl;
+
+	// Need to be determined.
+	return cv::countNonZero(blueImage) > 10;
+}
+
+
 int main(int argc, char **argv) {
 
 	ros::init(argc, argv, "vision_node");
 
 	ros::NodeHandle nh;
 	//Initialize particles
-	ros::Duration(10).sleep();
+	ros::Duration(2).sleep();
 
 	CPSVision CPSVision(&nh);
 
     freshImage = false;
 
-    cv::Mat seg_image  = cv::Mat::zeros(480, 640, CV_8UC1);
+    cv::Mat seg_image  = cv::Mat::zeros(480, 640, CV_8UC1); //this is 1 channel image 
 
     //get image size from camera model, or initialize segmented images,
-    cv::Mat raw_image = cv::Mat::zeros(480, 640, CV_8UC3);//CV_32FC1
+    cv::Mat raw_image = cv::Mat::zeros(480, 640, CV_8UC3);//this is 3 channel image
+
+    // get the image that contains only blue pixels.
+    cv::Mat blueImage = cv::Mat::zeros(480, 640, CV_8UC1);
 
     image_transport::ImageTransport it(nh);
     image_transport::Subscriber img_sub_l = it.subscribe(
             "/davinci_endo/left/image_raw", 1, boost::function<void(const sensor_msgs::ImageConstPtr &)>(boost::bind(newImageCallback, _1, &raw_image)));
 
     ROS_INFO("---- done subscribe -----");
-    ros::Duration(2).sleep();
+    ros::Duration(1).sleep();
 
 	while (nh.ok()) {
 		ros::spinOnce();
-
 		// if camera is ready, track segmented image
 		if (freshImage) {
+			ros::spinOnce();
 
-			/*when getting new iamge, do somthing*/
+			// seg_image = segmentation(raw_image); //segmentation here
+			cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
+			//show what you see......
+			cv::imshow("raw image ", raw_image);
+			// cv::imshow("seg image ", seg_image);
+            cv::waitKey(10);
 
-			freshImage = false;
+			/*when getting new image, do somthing*/
+			if(findTarget(raw_image, blueImage)){
+				cout << "target found 1" << endl;
+                CPSVision.getG1();
+				CPSVision.getLocation1(blueImage);
+                ros::Duration(1).sleep();
+
+				// take the second picture.
+                ros::spinOnce();
+				cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
+
+                if(findTarget(raw_image, blueImage)) {
+					cout << "target found 2" << endl;
+                    CPSVision.getG2();
+                    CPSVision.getLocation2(blueImage);
+//					cv::Mat W_pose = CPSVision.computePose();
+					// publish.....
+                }else{
+					cout << "cannot find target twice" << endl;
+				}
 			}
 
-	}
+			freshImage = false;
+		}
+			// ROS_INFO_STREAM("raw_image"<<raw_image);
 
+	}
 	return 0;
 }

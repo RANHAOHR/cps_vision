@@ -53,12 +53,16 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <sensor_msgs/image_encodings.h>
 #include <sensor_msgs/CameraInfo.h>
+#include <geometry_msgs/Vector3.h>
+#include <geometry_msgs/Quaternion.h>
+
 #include <cv_bridge/cv_bridge.h>
 
 #include <boost/random/normal_distribution.hpp>
 
 #include <geometry_msgs/Transform.h>
 #include <tf/transform_listener.h>
+#include <nav_msgs/Odometry.h>
 
 #include <iostream>
 #include <fstream>
@@ -72,22 +76,41 @@ private:
     /**
      * The subscriber of the projection matrices for left and right camera. This is subscribing to camera_info.
      */
-	ros::Subscriber projectionMat_subscriber; 
+	ros::Subscriber projectionMat_subscriber;
+
+    ros::Subscriber gMat_subscriber;
 
     /**
      * @brief get P_right from subsriber
      * @param projectionRight
      */
     void projectionMatCB(const sensor_msgs::CameraInfo::ConstPtr &projectionRight);
+
+    /*
+     * What is this?
+     */
     cv::Mat projection_mat;
+
     bool freshCameraInfo;
+
+    cv::Mat P1_mat;
+    cv::Mat P2_mat;
+
+    cv::Mat G1_mat;
+    cv::Mat G2_mat;
+
+    cv::Mat R_mat;
+    cv::Mat T_mat;
+    /**
+     * The intrinsic camera matrix.
+     */
+    cv::Mat C_mat;
 
 public:
     /**
      * The left and right raw images from image pipeline
      */
 	cv::Mat raw_image; 
-
 
 	/**
 	* @brief - The default constructor
@@ -101,6 +124,18 @@ public:
 	 * @brief- The deconstructor
 	 */
 	~CPSVision();
+
+	void getLocation1(const cv::Mat &image);
+
+    void getLocation2(const cv::Mat &image);
+
+    void getPosition(const nav_msgs::Odometry::ConstPtr &position);
+
+    void getG1();
+
+    void getG2();
+
+    cv::Mat computePose();
 };
 
 #endif
