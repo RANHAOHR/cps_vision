@@ -88,7 +88,7 @@ void CPSVision::getLocation2(const cv::Mat &image){
 }
 
 void CPSVision::getPose(const nav_msgs::Odometry::ConstPtr &pose) {
-    cv::Mat vect3 = cv::Mat::zeros(3,0,CV_64FC1);
+    cv::Mat vect3 = cv::Mat::zeros(3,1,CV_64FC1);
     double angle = 2*acos(pose->pose.pose.orientation.w);
     vect3.at<double>(0,0) = angle * pose->pose.pose.orientation.x / sqrt(1- pose->pose.pose.orientation.w * pose->pose.pose.orientation.w);
     vect3.at<double>(1,0) = angle * pose->pose.pose.orientation.y / sqrt(1- pose->pose.pose.orientation.w * pose->pose.pose.orientation.w);

@@ -50,7 +50,7 @@ cv::Mat segmentation(cv::Mat &InputImg) {
 }
 
 bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
-	cv::inRange(image, cv::Scalar(30, 20, 0), cv::Scalar(150,100,20), blueImage);   // 110, 150, 150   255, 0, 0
+	cv::inRange(image, cv::Scalar(50, 20, 0), cv::Scalar(140,90,20), blueImage);   // 110, 150, 150   255, 0, 0
 	ROS_INFO("3");
 	imshow("Image with only blue pixel", blueImage);
 	cv::waitKey();
@@ -95,6 +95,7 @@ int main(int argc, char **argv) {
 			ros::spinOnce();
 
 			// seg_image = segmentation(raw_image); //segmentation here
+ROS_INFO("HERE");
 			cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
 			//show what you see......
 			cv::imshow("raw image ", raw_image);
