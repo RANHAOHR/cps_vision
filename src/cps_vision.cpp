@@ -151,8 +151,7 @@ cv::Mat CPSVision::computePose() {
     cv::Mat resulting_position = cv::Mat::zeros(4, 1, CV_64FC1);
     cv::SVD svd = cv::SVD(A_mat);
     cv::Mat resulting_position = svd.vt.colRange(3, 4).rowRange(0, 4);
-    target_position = resulting_position.clone();
-    double scale_w = resulting_position.at<double>(3,0);
+    double scale_w = resulting_position.at<double>(3, 0);
     target_position = resulting_position / scale_w;
     ROS_INFO_STREAM("Reported posistion is: " << target_position)
     // target_position.at<double>(0,0) = svd.vt.at<double>(0,3);
