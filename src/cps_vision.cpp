@@ -6,7 +6,7 @@ using namespace std;
 CPSVision::CPSVision(ros::NodeHandle *nodehandle):
         node_handle(*nodehandle){
     projectionMat_subscriber = node_handle.subscribe("/camera/rgb/camera_info", 1, &CPSVision::projectionMatCB, this);
-      //pose_subscriber = node_handle.subscribe("/davinci_endo/unsynched/right/camera_info", 1, &CPSVision::getPose, this);
+      pose_subscriber = node_handle.subscribe("/mavros/local_position/odom", 1, &CPSVision::getPose, this);
 
     raw_image = cv::Mat::zeros(480, 640, CV_8UC3);
 
@@ -43,43 +43,47 @@ void CPSVision::projectionMatCB(const sensor_msgs::CameraInfo::ConstPtr &project
     C_mat.at<double>(2,1) = projectionRight->P[9];
     C_mat.at<double>(2,2) = projectionRight->P[10];
     C_mat.at<double>(2,3) = projectionRight->P[11];
-    ROS_INFO_STREAM("C MATRIX"<<C_mat);
+    //ROS_INFO_STREAM("C MATRIX"<<C_mat);
 
 }
 
 
 void CPSVision::getLocation1(const cv::Mat &image){
-	cv::Mat sum_mat = cv::Mat::zeros(1, 3, CV_64FC1);
+	double sum_row = 0;
+	double sum_col = 0;
 	int count = 0;
 	for(int row = 0; row < image.rows; row++){
 		for(int col = 0; col < image.cols; col++){
-			if(image.at<double>(row, col) != 0){
-				sum_mat.at<double>(0) += row;
-				sum_mat.at<double>(1) += col;
+			//ROS_INFO_STREAM("image.at<uchar>(row, col)"<< (int)image.at<uchar>(row, col));
+			if((int)image.at<uchar>(row, col) != 0){
+				sum_row += row;
+				sum_col += col;
 				count++;
 			}
 		}
 	}
-	P1_mat.at<double>(0) = sum_mat.at<double>(0) / count;
-	P1_mat.at<double>(1) = sum_mat.at<double>(1) / count;
+	P1_mat.at<double>(0) = sum_row / count;
+	P1_mat.at<double>(1) = sum_col / count;
 	P1_mat.at<double>(2) = 1;
     ROS_INFO_STREAM("P1 MATRIX"<<P1_mat);
 }
 void CPSVision::getLocation2(const cv::Mat &image){
-    cv::Mat sum_mat = cv::Mat::zeros(1, 3, CV_64FC1);
-    int count = 0;
-    for(int row = 0; row < image.rows; row++){
-        for(int col = 0; col < image.cols; col++){
-            if(image.at<double>(row, col) != 0){
-                sum_mat.at<double>(0) += row;
-                sum_mat.at<double>(1) += col;
-                count++;
-            }
-        }
-    }
-    P2_mat.at<double>(0) = sum_mat.at<double>(0) / count;
-    P2_mat.at<double>(1) = sum_mat.at<double>(1) / count;
-    P2_mat.at<double>(2) = 1;
+	double sum_row = 0;
+	double sum_col = 0;
+	int count = 0;
+	for(int row = 0; row < image.rows; row++){
+		for(int col = 0; col < image.cols; col++){
+			//ROS_INFO_STREAM("image.at<uchar>(row, col)"<< (int)image.at<uchar>(row, col));
+			if((int)image.at<uchar>(row, col) != 0){
+				sum_row += row;
+				sum_col += col;
+				count++;
+			}
+		}
+	}
+	P2_mat.at<double>(0) = sum_row / count;
+	P2_mat.at<double>(1) = sum_col / count;
+	P2_mat.at<double>(2) = 1;
     ROS_INFO_STREAM("P2 MATRIX"<<P2_mat);
 }
 
@@ -94,11 +98,11 @@ void CPSVision::getPose(const nav_msgs::Odometry::ConstPtr &pose) {
     T_mat.at<double>(0,0) = pose->pose.pose.position.x;
     T_mat.at<double>(1,0) = pose->pose.pose.position.y;
     T_mat.at<double>(2,0) = pose->pose.pose.position.z;
+ROS_INFO_STREAM("T_mat"<<T_mat);
 }
 
 
-void CPSVision::getG1() {
-
+void CPSVision::getG1() {	
     R_mat.copyTo(G1_mat.colRange(0, 3).rowRange(0, 3));
     T_mat.copyTo(G1_mat.colRange(3, 4).rowRange(0, 3));
 

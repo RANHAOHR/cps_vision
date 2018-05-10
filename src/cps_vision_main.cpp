@@ -4,6 +4,7 @@
 #include <cwru_opencv_common/projective_geometry.h>
 #include <cps_vision/cps_vision.h>
 
+using namespace cv;
 using namespace std;
 using namespace cv_projective;
 
@@ -49,10 +50,11 @@ cv::Mat segmentation(cv::Mat &InputImg) {
 }
 
 bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
-	//cv::inRange(image, cv::Scalar(200, 0, 0), cv::Scalar(255,50,50), blueImage);   // 110, 150, 150   255, 0, 0
-	cv::inRange(image, cv::Scalar(0,100, 100), cv::Scalar(100,255,255), blueImage);
+	cv::inRange(image, cv::Scalar(30, 20, 0), cv::Scalar(150,100,20), blueImage);   // 110, 150, 150   255, 0, 0
+	ROS_INFO("3");
 	imshow("Image with only blue pixel", blueImage);
-	ROS_INFO_STREAM("Total " << cv::countNonZero(blueImage) << " blue pixels");
+	cv::waitKey();
+	ROS_INFO_STREAM("Total "<< cv::countNonZero(blueImage) << "  blue pixels");
 
 	// Need to be determined.
 	return cv::countNonZero(blueImage) > 10;
@@ -69,22 +71,22 @@ int main(int argc, char **argv) {
 
 	CPSVision CPSVision(&nh);
 
-	freshImage = false;
+    freshImage = false;
 
-	cv::Mat seg_image  = cv::Mat::zeros(480, 640, CV_8UC1); //this is 1 channel image
+    cv::Mat seg_image  = cv::Mat::zeros(480, 640, CV_8UC1); //this is 1 channel image 
 
-	//get image size from camera model, or initialize segmented images,
-	cv::Mat raw_image = cv::Mat::zeros(480, 640, CV_8UC3);//this is 3 channel image
+    //get image size from camera model, or initialize segmented images,
+    cv::Mat raw_image = cv::Mat::zeros(480, 640, CV_8UC3);//this is 3 channel image
 
-	// get the image that contains only blue pixels.
-	cv::Mat blueImage = cv::Mat::zeros(480, 640, CV_8UC1);
+    // get the image that contains only blue pixels.
+    cv::Mat blueImage = cv::Mat::zeros(480, 640, CV_8UC1);
 
-	image_transport::ImageTransport it(nh);
-	image_transport::Subscriber img_sub_l = it.subscribe(
-	        "/camera/rdb/image_raw", 1, boost::function<void(const sensor_msgs::ImageConstPtr &)>(boost::bind(newImageCallback, _1, &raw_image)));
+    image_transport::ImageTransport it(nh);
+    image_transport::Subscriber img_sub_l = it.subscribe(
+            "/camera/rgb/image_raw", 1, boost::function<void(const sensor_msgs::ImageConstPtr &)>(boost::bind(newImageCallback, _1, &raw_image)));
 
-	ROS_INFO("---- done subscribe -----");
-	ros::Duration(1).sleep();
+    ROS_INFO("---- done subscribe -----");
+    ros::Duration(1).sleep();
 
 	while (nh.ok()) {
 		ros::spinOnce();
@@ -97,30 +99,43 @@ int main(int argc, char **argv) {
 			//show what you see......
 			cv::imshow("raw image ", raw_image);
 			// cv::imshow("seg image ", seg_image);
-      cv::waitKey(10);
+            cv::waitKey(10);
 
-			// /*when getting new image, do somthing*/
-			// if(findTarget(raw_image, blueImage)){
-			// 	ROS_INFO("target found 1");
-      //   CPSVision.getG1();
-			// 	CPSVision.getLocation1(blueImage);
-      //   ros::Duration(1).sleep();
-			//
-			// 	// take the second picture.
-      //   ros::spinOnce();
-      //   if(findTarget(raw_image, blueImage)) {
-			// 		ROS_INFO("target found 2");
-			// 		CPSVision.getG2();
-			// 		CPSVision.getLocation2(blueImage);
-			// 		//					cv::Mat W_pose = CPSVision.computePose();
-			// 		// publish.....
-      //   }else{
-			// 		ROS_INFO("cannot find the target in 2nd image stream");
-			// 	}
-			// }
+		//	for(int row = 0; row < raw_image.rows; row++){
+		//		for(int col = 0; col < raw_image.cols; col++){
+		//			Vec3b pixel = raw_image.at<Vec3b>(row,col);
+		//			ROS_INFO_STREAM("RGB c1: "<< (int)pixel(1));
+		//			ROS_INFO_STREAM("RGB c2: "<< (int)pixel(2));
+		//			ROS_INFO_STREAM("RGB c3: "<< (int)pixel(3));
+		//		}
+		//	}
+		//	/*when getting new image, do somthing*/
+			if(findTarget(raw_image, blueImage)){
+				ROS_INFO("target found 1");
+            	CPSVision.getG1();
+				CPSVision.getLocation1(blueImage);
+                ros::Duration(1).sleep();
+
+				// take the second picture.
+                ros::spinOnce();
+				cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
+
+                if(findTarget(raw_image, blueImage)) {
+					ROS_INFO("target found 2");
+                    CPSVision.getG2();
+                    CPSVision.getLocation2(blueImage);
+
+					cv::Mat W_pose = CPSVision.computePose();
+					// publish.....
+                }else{
+					ROS_INFO("cannot find target in the 2nd image stream");
+				}
+			}
 
 			freshImage = false;
 		}
+			// ROS_INFO_STREAM("raw_image"<<raw_image);
+
 	}
 	return 0;
 }
