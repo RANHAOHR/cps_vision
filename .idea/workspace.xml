@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
+    <generated>
+      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="roscpp_generate_messages_py" />
+      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="std_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="std_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="roscpp_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="roscpp_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="cps_vision" />
+      <config projectName="cps_vision" targetName="gtest_main" />
+      <config projectName="cps_vision" targetName="download_extra_data" />
+      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_py" />
+      <config projectName="cps_vision" targetName="doxygen" />
+      <config projectName="cps_vision" targetName="run_tests" />
+      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="std_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="roscpp_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="tests" />
+      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="clean_test_results" />
+      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="roscpp_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="gtest" />
+      <config projectName="cps_vision" targetName="std_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="std_msgs_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="_catkin_empty_exported_target" />
+      <config projectName="cps_vision" targetName="cps_vision_lib" />
+      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_cpp" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5af087c3-02d6-4e92-9828-76207c59a5b2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cps_vision.cpp" afterPath="$PROJECT_DIR$/src/cps_vision.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cps_vision_main.cpp" afterPath="$PROJECT_DIR$/src/cps_vision_main.cpp" />
+    </list>
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="cps_vision_main.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cps_vision_main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="54" column="79" lean-forward="false" selection-start-line="54" selection-start-column="79" selection-end-line="54" selection-end-column="79" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cps_vision.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cps_vision.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="137" column="32" lean-forward="false" selection-start-line="137" selection-start-column="32" selection-end-line="137" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#60#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cps_vision.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/cps_vision/cps_vision.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="137" column="26" lean-forward="false" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
+              <folding>
+                <element signature="e#1752#1770#0" expanded="true" />
+                <marker date="1525964223857" expanded="true" signature="2393:3654" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>P</find>
+      <find>C_mat</find>
+      <find>O_mat</find>
+      <find>G1</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>orientation</replace>
+      <replace>O</replace>
+      <replace>O_mat</replace>
+      <replace>R_mat</replace>
+      <replace>G2</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/include/cps_vision/cps_vision.h" />
+        <option value="$PROJECT_DIR$/src/IPlImage.h" />
+        <option value="$PROJECT_DIR$/src/cps_vision.cpp" />
+        <option value="$PROJECT_DIR$/src/cps_vision_main.cpp" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="2212" />
+    <option name="y" value="24" />
+    <option name="width" value="1400" />
+    <option name="height" value="1028" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="cps_vision" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="cps_vision" type="47feb1d3:ProjectViewModuleNode" />
+            </path>
+            <path>
+              <item name="cps_vision" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="cps_vision" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="cps_vision" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cps_vision" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="cps_vision" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="cps_vision" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cps_vision" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="cps_vision" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="cps_vision" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="cps_vision" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cps_vision" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="cps_vision" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="cps_vision" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="SwiftSettings" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="GO_FMT" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.cps_vision">
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <envs />
+    </configuration>
+    <configuration name="_catkin_empty_exported_target" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="_catkin_empty_exported_target" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="clean_test_results" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="clean_test_results" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="cps_vision" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="cps_vision" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="cps_vision" RUN_TARGET_NAME="cps_vision">
+      <envs />
+    </configuration>
+    <configuration name="cps_vision_lib" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="cps_vision_lib" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="cwru_opencv_common_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="cwru_opencv_common_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="cwru_opencv_common_generate_messages_eus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="cwru_opencv_common_generate_messages_eus" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="cwru_opencv_common_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="cwru_opencv_common_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="cwru_opencv_common_generate_messages_nodejs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="cwru_opencv_common_generate_messages_nodejs" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="cwru_opencv_common_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="cwru_opencv_common_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="download_extra_data" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="download_extra_data" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="doxygen" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="doxygen" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="geographic_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="geographic_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="geographic_msgs_generate_messages_eus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="geographic_msgs_generate_messages_eus" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="geographic_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="geographic_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="geographic_msgs_generate_messages_nodejs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="geographic_msgs_generate_messages_nodejs" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="geographic_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="geographic_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="geometry_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="geometry_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="geometry_msgs_generate_messages_eus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="geometry_msgs_generate_messages_eus" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="geometry_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="geometry_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="geometry_msgs_generate_messages_nodejs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="geometry_msgs_generate_messages_nodejs" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="geometry_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="geometry_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="gtest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="gtest" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="gtest_main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="gtest_main" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="mavros_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="mavros_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="mavros_msgs_generate_messages_eus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="mavros_msgs_generate_messages_eus" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="mavros_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="mavros_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="mavros_msgs_generate_messages_nodejs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="mavros_msgs_generate_messages_nodejs" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="mavros_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="mavros_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="roscpp_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="roscpp_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="roscpp_generate_messages_eus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="roscpp_generate_messages_eus" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="roscpp_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="roscpp_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="roscpp_generate_messages_nodejs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="roscpp_generate_messages_nodejs" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="roscpp_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="roscpp_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="rosgraph_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="rosgraph_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="rosgraph_msgs_generate_messages_eus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="rosgraph_msgs_generate_messages_eus" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="rosgraph_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="rosgraph_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="rosgraph_msgs_generate_messages_nodejs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="rosgraph_msgs_generate_messages_nodejs" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="rosgraph_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="rosgraph_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="run_tests" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="run_tests" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="sensor_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="sensor_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="sensor_msgs_generate_messages_eus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="sensor_msgs_generate_messages_eus" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="sensor_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="sensor_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="sensor_msgs_generate_messages_nodejs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="sensor_msgs_generate_messages_nodejs" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="sensor_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="sensor_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="std_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="std_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="std_msgs_generate_messages_eus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="std_msgs_generate_messages_eus" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="std_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="std_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="std_msgs_generate_messages_nodejs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="std_msgs_generate_messages_nodejs" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="std_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="std_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="tests" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="tests" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="uuid_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="uuid_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="uuid_msgs_generate_messages_eus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="uuid_msgs_generate_messages_eus" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="uuid_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="uuid_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="uuid_msgs_generate_messages_nodejs" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="uuid_msgs_generate_messages_nodejs" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="uuid_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="cps_vision" TARGET_NAME="uuid_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <list size="56">
+      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
+      <item index="1" class="java.lang.String" itemvalue="Application._catkin_empty_exported_target" />
+      <item index="2" class="java.lang.String" itemvalue="Application.clean_test_results" />
+      <item index="3" class="java.lang.String" itemvalue="Application.cps_vision" />
+      <item index="4" class="java.lang.String" itemvalue="Application.cps_vision_lib" />
+      <item index="5" class="java.lang.String" itemvalue="Application.cwru_opencv_common_generate_messages_cpp" />
+      <item index="6" class="java.lang.String" itemvalue="Application.cwru_opencv_common_generate_messages_eus" />
+      <item index="7" class="java.lang.String" itemvalue="Application.cwru_opencv_common_generate_messages_lisp" />
+      <item index="8" class="java.lang.String" itemvalue="Application.cwru_opencv_common_generate_messages_nodejs" />
+      <item index="9" class="java.lang.String" itemvalue="Application.cwru_opencv_common_generate_messages_py" />
+      <item index="10" class="java.lang.String" itemvalue="Application.download_extra_data" />
+      <item index="11" class="java.lang.String" itemvalue="Application.doxygen" />
+      <item index="12" class="java.lang.String" itemvalue="Application.geographic_msgs_generate_messages_cpp" />
+      <item index="13" class="java.lang.String" itemvalue="Application.geographic_msgs_generate_messages_eus" />
+      <item index="14" class="java.lang.String" itemvalue="Application.geographic_msgs_generate_messages_lisp" />
+      <item index="15" class="java.lang.String" itemvalue="Application.geographic_msgs_generate_messages_nodejs" />
+      <item index="16" class="java.lang.String" itemvalue="Application.geographic_msgs_generate_messages_py" />
+      <item index="17" class="java.lang.String" itemvalue="Application.geometry_msgs_generate_messages_cpp" />
+      <item index="18" class="java.lang.String" itemvalue="Application.geometry_msgs_generate_messages_eus" />
+      <item index="19" class="java.lang.String" itemvalue="Application.geometry_msgs_generate_messages_lisp" />
+      <item index="20" class="java.lang.String" itemvalue="Application.geometry_msgs_generate_messages_nodejs" />
+      <item index="21" class="java.lang.String" itemvalue="Application.geometry_msgs_generate_messages_py" />
+      <item index="22" class="java.lang.String" itemvalue="Application.mavros_msgs_generate_messages_cpp" />
+      <item index="23" class="java.lang.String" itemvalue="Application.mavros_msgs_generate_messages_eus" />
+      <item index="24" class="java.lang.String" itemvalue="Application.mavros_msgs_generate_messages_lisp" />
+      <item index="25" class="java.lang.String" itemvalue="Application.mavros_msgs_generate_messages_nodejs" />
+      <item index="26" class="java.lang.String" itemvalue="Application.mavros_msgs_generate_messages_py" />
+      <item index="27" class="java.lang.String" itemvalue="Application.roscpp_generate_messages_cpp" />
+      <item index="28" class="java.lang.String" itemvalue="Application.roscpp_generate_messages_eus" />
+      <item index="29" class="java.lang.String" itemvalue="Application.roscpp_generate_messages_lisp" />
+      <item index="30" class="java.lang.String" itemvalue="Application.roscpp_generate_messages_nodejs" />
+      <item index="31" class="java.lang.String" itemvalue="Application.roscpp_generate_messages_py" />
+      <item index="32" class="java.lang.String" itemvalue="Application.rosgraph_msgs_generate_messages_cpp" />
+      <item index="33" class="java.lang.String" itemvalue="Application.rosgraph_msgs_generate_messages_eus" />
+      <item index="34" class="java.lang.String" itemvalue="Application.rosgraph_msgs_generate_messages_lisp" />
+      <item index="35" class="java.lang.String" itemvalue="Application.rosgraph_msgs_generate_messages_nodejs" />
+      <item index="36" class="java.lang.String" itemvalue="Application.rosgraph_msgs_generate_messages_py" />
+      <item index="37" class="java.lang.String" itemvalue="Application.run_tests" />
+      <item index="38" class="java.lang.String" itemvalue="Application.sensor_msgs_generate_messages_cpp" />
+      <item index="39" class="java.lang.String" itemvalue="Application.sensor_msgs_generate_messages_eus" />
+      <item index="40" class="java.lang.String" itemvalue="Application.sensor_msgs_generate_messages_lisp" />
+      <item index="41" class="java.lang.String" itemvalue="Application.sensor_msgs_generate_messages_nodejs" />
+      <item index="42" class="java.lang.String" itemvalue="Application.sensor_msgs_generate_messages_py" />
+      <item index="43" class="java.lang.String" itemvalue="Application.std_msgs_generate_messages_cpp" />
+      <item index="44" class="java.lang.String" itemvalue="Application.std_msgs_generate_messages_eus" />
+      <item index="45" class="java.lang.String" itemvalue="Application.std_msgs_generate_messages_lisp" />
+      <item index="46" class="java.lang.String" itemvalue="Application.std_msgs_generate_messages_nodejs" />
+      <item index="47" class="java.lang.String" itemvalue="Application.std_msgs_generate_messages_py" />
+      <item index="48" class="java.lang.String" itemvalue="Application.tests" />
+      <item index="49" class="java.lang.String" itemvalue="Application.uuid_msgs_generate_messages_cpp" />
+      <item index="50" class="java.lang.String" itemvalue="Application.uuid_msgs_generate_messages_eus" />
+      <item index="51" class="java.lang.String" itemvalue="Application.uuid_msgs_generate_messages_lisp" />
+      <item index="52" class="java.lang.String" itemvalue="Application.uuid_msgs_generate_messages_nodejs" />
+      <item index="53" class="java.lang.String" itemvalue="Application.uuid_msgs_generate_messages_py" />
+      <item index="54" class="java.lang.String" itemvalue="Application.gtest" />
+      <item index="55" class="java.lang.String" itemvalue="Application.gtest_main" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5af087c3-02d6-4e92-9828-76207c59a5b2" name="Default" comment="" />
+      <created>1525880737499</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1525880737499</updated>
+      <workItem from="1525880738634" duration="20024000" />
+    </task>
+    <task id="LOCAL-00001" summary="version1_5/9">
+      <created>1525901884630</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1525901884630</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="20024000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="2212" y="24" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924336" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32924336" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959569" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997955" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="version1_5/9" />
+    <option name="LAST_COMMIT_MESSAGE" value="version1_5/9" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="8" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/IPlImage.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IPlImage.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/cps_vision/cps_vision.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="137" column="26" lean-forward="false" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="26" />
+          <folding>
+            <element signature="e#1752#1770#0" expanded="true" />
+            <marker date="1525964223857" expanded="true" signature="2393:3654" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cps_vision.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="137" column="32" lean-forward="false" selection-start-line="137" selection-start-column="32" selection-end-line="137" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cps_vision_main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="54" column="79" lean-forward="false" selection-start-line="54" selection-start-column="79" selection-end-line="54" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

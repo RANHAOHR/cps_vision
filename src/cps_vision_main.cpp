@@ -52,7 +52,7 @@ bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
 	//cv::inRange(image, cv::Scalar(200, 0, 0), cv::Scalar(255,50,50), blueImage);   // 110, 150, 150   255, 0, 0
 	cv::inRange(image, cv::Scalar(0,100, 100), cv::Scalar(100,255,255), blueImage);
 	imshow("Image with only blue pixel", blueImage);
-	ROS_INFO_STREAM("Total " << cv::countNonZero(blueImage) << " blue pixels")
+	ROS_INFO_STREAM("Total " << cv::countNonZero(blueImage) << " blue pixels");
 
 	// Need to be determined.
 	return cv::countNonZero(blueImage) > 10;
