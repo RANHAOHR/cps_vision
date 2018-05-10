@@ -78,7 +78,7 @@ private:
      */
 	ros::Subscriber projectionMat_subscriber;
 
-    ros::Subscriber gMat_subscriber;
+    ros::Subscriber pose_subscriber;
 
     /**
      * @brief get P_right from subsriber

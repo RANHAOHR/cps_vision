@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ranhao/ros_ws/src/cps_vision/cmake-build-debug/devel/setup.sh
