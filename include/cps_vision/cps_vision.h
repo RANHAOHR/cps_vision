@@ -110,7 +110,7 @@ public:
     /**
      * The left and right raw images from image pipeline
      */
-	cv::Mat raw_image; 
+	cv::Mat raw_image;
 
 	/**
 	* @brief - The default constructor
@@ -129,7 +129,7 @@ public:
 
     void getLocation2(const cv::Mat &image);
 
-    void getPosition(const nav_msgs::Odometry::ConstPtr &position);
+    void getPose(const nav_msgs::Odometry::ConstPtr &pose);
 
     void getG1();
 
