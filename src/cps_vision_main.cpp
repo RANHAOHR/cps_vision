@@ -30,6 +30,7 @@ void newImageCallback(const sensor_msgs::ImageConstPtr &msg, cv::Mat *outputImag
 }
 
 bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
+<<<<<<< HEAD
     cv::Mat blueImage1 = cv::Mat::zeros(480, 640, CV_8UC1);
     cv::Mat blueImage2 = cv::Mat::zeros(480, 640, CV_8UC1);
     cv::Mat blueImage3 = cv::Mat::zeros(480, 640, CV_8UC1);
@@ -43,6 +44,10 @@ bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
 //    blueImage = blueImage1 + blueImage2 + blueImage3 + blueImage4;
     cv::add(blueImage1, blueImage2, blueImage4);
     cv::add(blueImage3, blueImage4, blueImage);
+=======
+	cv::inRange(image, cv::Scalar(50, 20, 0), cv::Scalar(140,90,20), blueImage);   // 110, 150, 150   255, 0, 0
+	ROS_INFO("3");
+>>>>>>> c429c7910c27ab9594d6c966c746280b484d1d57
 	imshow("Image with only blue pixel", blueImage);
 	cv::waitKey();
 	ROS_INFO_STREAM("Total "<< cv::countNonZero(blueImage) << "  blue pixels");
@@ -160,6 +165,11 @@ int main(int argc, char **argv) {
 		if (freshImage) {
 			ros::spinOnce();
 
+<<<<<<< HEAD
+=======
+			// seg_image = segmentation(raw_image); //segmentation here
+ROS_INFO("HERE");
+>>>>>>> c429c7910c27ab9594d6c966c746280b484d1d57
 			cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
 			//show what you see......
 			cv::imshow("raw image ", raw_image);
