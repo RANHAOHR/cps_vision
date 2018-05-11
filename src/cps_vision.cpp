@@ -12,8 +12,8 @@ CPSVision::CPSVision(ros::NodeHandle *nodehandle):
 
     C_mat = cv::Mat::zeros(3,4, CV_64FC1);
 
-    P1_mat = cv::Mat::zeros(3, 1, CV_64FC1);
-    P2_mat = cv::Mat::zeros(3, 1, CV_64FC1);
+    P1_mat = cv::Mat::zeros(3, 1, CV_32FC1);
+    P2_mat = cv::Mat::zeros(3, 1, CV_32FC1);
 
     R_mat = cv::Mat::zeros(3, 3, CV_64FC1);
     T_mat = cv::Mat::zeros(3, 1, CV_64FC1);
@@ -83,16 +83,16 @@ cv::Mat CPSVision::computePose() {
     cv::Mat Q_mat = C_mat * Gc_mat * G2_mat;
     cv::Mat A_mat = cv::Mat::zeros(4, 4, CV_64FC1);
 
-    double u1 = P1_mat.at<double>(0);
-    double v1 = P1_mat.at<double>(1);
+    float u1 = P1_mat.at<float>(0);
+    float v1 = P1_mat.at<float>(1);
     cv::Mat temp_mat = u1 * P_mat.colRange(0, 4).rowRange(2, 3) - P_mat.colRange(0, 4).rowRange(0, 1);
     temp_mat.copyTo(A_mat.colRange(0, 4).rowRange(0, 1));
 
     temp_mat = v1 * P_mat.colRange(0, 4).rowRange(2, 3) - P_mat.colRange(0, 4).rowRange(1, 2);
     temp_mat.copyTo(A_mat.colRange(0, 4).rowRange(1, 2));
 
-    double u2 = P2_mat.at<double>(0);
-    double v2 = P2_mat.at<double>(1);
+    float u2 = P2_mat.at<float>(0);
+    float v2 = P2_mat.at<float>(1);
     temp_mat = u2 * Q_mat.colRange(0, 4).rowRange(2, 3) - Q_mat.colRange(0, 4).rowRange(0, 1);
     temp_mat.copyTo(A_mat.colRange(0, 4).rowRange(2, 3));
     temp_mat = v2 * Q_mat.colRange(0, 4).rowRange(2, 3) - Q_mat.colRange(0, 4).rowRange(1, 2);
@@ -105,9 +105,6 @@ cv::Mat CPSVision::computePose() {
     double scale_w = resulting_position.at<double>(3, 0);
     target_position = resulting_position / scale_w;
     ROS_INFO_STREAM("Reported posistion is: " << target_position);
-    // target_position.at<double>(0,0) = svd.vt.at<double>(0,3);
-    // target_position.at<double>(1,0) = svd.vt.at<double>(1,3);
-    // target_position.at<double>(2,0) = svd.vt.at<double>(2,3);
-    // target_position.at<double>(3,0) = svd.vt.at<double>(3,3);
+
     return target_position;
 }
