@@ -6,7 +6,7 @@
 #include <opencv2/features2d.hpp>
 #include <opencv2/xfeatures2d.hpp>
 
-
+#include <ros/package.h>
 using namespace cv;
 using namespace std;
 using namespace cv_projective;
@@ -52,7 +52,7 @@ bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
 	return cv::countNonZero(blueImage) > 30;
 }
 
-cv::Mat matchPattern(char* filenames,const cv::Mat &rawImg ){
+cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
 
     std::vector<Point2f> filtered_pixels;
     cv::Mat position_pixel = cv::Mat::zeros(3, 1, CV_64FC1);
@@ -133,6 +133,9 @@ int main(int argc, char **argv) {
     freshImage = false;
     match = false;
 
+	std::string cps_vision_pkg = ros::package::getPath("cps_vision");
+	std::string model_path = cps_vision_pkg + "/object.jpg";
+ROS_INFO_STREAM("model_path: "<< model_path);
     //get image size from camera model, or initialize segmented images,
     cv::Mat raw_image = cv::Mat::zeros(480, 640, CV_8UC3);//this is 3 channel image
 
@@ -187,7 +190,7 @@ int main(int argc, char **argv) {
 		//	/*when getting new image, do somthing*/
 			if(findTarget(raw_image, blueImage)){
 				ROS_INFO("target found 1");
-                CPSVision.P1_mat = matchPattern("/home/ranhao/ros_ws/src/cps_vision/object.jpg",blueImage);
+                CPSVision.P1_mat = matchPattern(model_path, blueImage);
                 ROS_INFO_STREAM("CPSVision.P1_mat"<<CPSVision.P1_mat);
             	CPSVision.getG1();
                 ros::Duration(1).sleep();
@@ -198,7 +201,7 @@ int main(int argc, char **argv) {
 
                 if(findTarget(raw_image, blueImage)) {
 					ROS_INFO("target found 2");
-                    CPSVision.P2_mat = matchPattern("/home/ranhao/ros_ws/src/cps_vision/object.jpg",blueImage);
+                    CPSVision.P2_mat = matchPattern(model_path, blueImage);
                     CPSVision.getG2();
                     if(match){ //have keypoints matched
                         cv::Mat W_pose = CPSVision.computePose();
