@@ -20,6 +20,11 @@ CPSVision::CPSVision(ros::NodeHandle *nodehandle):
     G1_mat = cv::Mat::eye(4,4, CV_64FC1);
     G2_mat = cv::Mat::eye(4,4, CV_64FC1);
 
+    Gc_mat = (cv::Mat_<double>(4,4) << 0,   1,   0,   0,
+	    					  1,    0,   0,    0.000,
+	    					  0,   0,   -1,    -0.04,
+	    						0, 	   0,  0, 	1);
+
     freshCameraInfo = false;
 
 };
@@ -98,11 +103,10 @@ void CPSVision::getPose(const nav_msgs::Odometry::ConstPtr &pose) {
     T_mat.at<double>(0,0) = pose->pose.pose.position.x;
     T_mat.at<double>(1,0) = pose->pose.pose.position.y;
     T_mat.at<double>(2,0) = pose->pose.pose.position.z;
-ROS_INFO_STREAM("T_mat"<<T_mat);
 }
 
 
-void CPSVision::getG1() {	
+void CPSVision::getG1() {
     R_mat.copyTo(G1_mat.colRange(0, 3).rowRange(0, 3));
     T_mat.copyTo(G1_mat.colRange(3, 4).rowRange(0, 3));
 
@@ -115,8 +119,8 @@ void CPSVision::getG2() {
 }
 
 cv::Mat CPSVision::computePose() {
-    cv::Mat P_mat = C_mat * G1_mat;
-    cv::Mat Q_mat = C_mat * G2_mat;
+    cv::Mat P_mat = C_mat * Gc_mat * G1_mat;
+    cv::Mat Q_mat = C_mat * Gc_mat * G2_mat;
     cv::Mat A_mat = cv::Mat::zeros(4, 4, CV_64FC1);
 
     double u1 = P1_mat.at<double>(0);

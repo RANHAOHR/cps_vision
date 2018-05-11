@@ -135,7 +135,6 @@ int main(int argc, char **argv) {
 
 	std::string cps_vision_pkg = ros::package::getPath("cps_vision");
 	std::string model_path = cps_vision_pkg + "/object.jpg";
-ROS_INFO_STREAM("model_path: "<< model_path);
     //get image size from camera model, or initialize segmented images,
     cv::Mat raw_image = cv::Mat::zeros(480, 640, CV_8UC3);//this is 3 channel image
 

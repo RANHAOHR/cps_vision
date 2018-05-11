@@ -95,6 +95,7 @@ private:
 
     cv::Mat G1_mat;
     cv::Mat G2_mat;
+		cv::Mat Gc_mat;
 
     cv::Mat R_mat;
     cv::Mat T_mat;
