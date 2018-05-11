@@ -95,6 +95,7 @@ private:
 
     cv::Mat G1_mat;
     cv::Mat G2_mat;
+	cv::Mat Gc_mat;
 
     cv::Mat R_mat;
     cv::Mat T_mat;
@@ -124,10 +125,6 @@ public:
 
     cv::Mat P1_mat;
     cv::Mat P2_mat;
-
-	void getLocation1(const cv::Mat &image);
-
-    void getLocation2(const cv::Mat &image);
 
     void getPose(const nav_msgs::Odometry::ConstPtr &pose);
 

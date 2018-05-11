@@ -45,8 +45,8 @@ bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
     cv::add(blueImage3, blueImage, blueImage);
     cv::add(blueImage4, blueImage, blueImage);
 
-	imshow("Image with only blue pixel", blueImage);
-	cv::waitKey();
+	//imshow("Image with only blue pixel", blueImage);
+	//cv::waitKey(10);
 	ROS_INFO_STREAM("Total "<< cv::countNonZero(blueImage) << "  blue pixels");
 
 	// Need to be determined.
@@ -123,7 +123,7 @@ cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
     cv::Mat match_mat;
     cv::drawMatches(targetImg, keypoints_1,rawImg,keypoints_2,matches_filtered,match_mat);
     imshow("matches image", match_mat);
-    cv::waitKey();
+    cv::waitKey(10);
 
     return position_pixel;
 }
@@ -141,7 +141,6 @@ int main(int argc, char **argv) {
 
 	std::string cps_vision_pkg = ros::package::getPath("cps_vision");
 	std::string model_path = cps_vision_pkg + "/object.jpg";
-ROS_INFO_STREAM("model_path: "<< model_path);
     //get image size from camera model, or initialize segmented images,
     cv::Mat raw_image = cv::Mat::zeros(480, 640, CV_8UC3);//this is 3 channel image
 
@@ -197,7 +196,6 @@ ROS_INFO_STREAM("model_path: "<< model_path);
 			if(findTarget(raw_image, blueImage)){
 				ROS_INFO("target found 1");
                 CPSVision.P1_mat = matchPattern(model_path, blueImage);
-                ROS_INFO_STREAM("CPSVision.P1_mat"<<CPSVision.P1_mat);
             	CPSVision.getG1();
                 ros::Duration(1).sleep();
 

@@ -20,6 +20,11 @@ CPSVision::CPSVision(ros::NodeHandle *nodehandle):
     G1_mat = cv::Mat::eye(4,4, CV_64FC1);
     G2_mat = cv::Mat::eye(4,4, CV_64FC1);
 
+    Gc_mat = (cv::Mat_<double>(4,4) << 0,   1,   0,   0,
+	    					  1,    0,   0,    0.000,
+	    					  0,   0,   -1,    -0.04,
+	    						0, 	   0,  0, 	1);
+
     freshCameraInfo = false;
 
 };
@@ -47,46 +52,6 @@ void CPSVision::projectionMatCB(const sensor_msgs::CameraInfo::ConstPtr &project
 
 }
 
-
-void CPSVision::getLocation1(const cv::Mat &image){
-	double sum_row = 0;
-	double sum_col = 0;
-	int count = 0;
-	for(int row = 0; row < image.rows; row++){
-		for(int col = 0; col < image.cols; col++){
-			//ROS_INFO_STREAM("image.at<uchar>(row, col)"<< (int)image.at<uchar>(row, col));
-			if((int)image.at<uchar>(row, col) != 0){
-				sum_row += row;
-				sum_col += col;
-				count++;
-			}
-		}
-	}
-	P1_mat.at<double>(0) = sum_row / count;
-	P1_mat.at<double>(1) = sum_col / count;
-	P1_mat.at<double>(2) = 1;
-    ROS_INFO_STREAM("P1 MATRIX"<<P1_mat);
-}
-void CPSVision::getLocation2(const cv::Mat &image){
-	double sum_row = 0;
-	double sum_col = 0;
-	int count = 0;
-	for(int row = 0; row < image.rows; row++){
-		for(int col = 0; col < image.cols; col++){
-			//ROS_INFO_STREAM("image.at<uchar>(row, col)"<< (int)image.at<uchar>(row, col));
-			if((int)image.at<uchar>(row, col) != 0){
-				sum_row += row;
-				sum_col += col;
-				count++;
-			}
-		}
-	}
-	P2_mat.at<double>(0) = sum_row / count;
-	P2_mat.at<double>(1) = sum_col / count;
-	P2_mat.at<double>(2) = 1;
-    ROS_INFO_STREAM("P2 MATRIX"<<P2_mat);
-}
-
 void CPSVision::getPose(const nav_msgs::Odometry::ConstPtr &pose) {
     cv::Mat vect3 = cv::Mat::zeros(3,1,CV_64FC1);
     double angle = 2*acos(pose->pose.pose.orientation.w);
@@ -98,11 +63,10 @@ void CPSVision::getPose(const nav_msgs::Odometry::ConstPtr &pose) {
     T_mat.at<double>(0,0) = pose->pose.pose.position.x;
     T_mat.at<double>(1,0) = pose->pose.pose.position.y;
     T_mat.at<double>(2,0) = pose->pose.pose.position.z;
-ROS_INFO_STREAM("T_mat"<<T_mat);
 }
 
 
-void CPSVision::getG1() {	
+void CPSVision::getG1() {
     R_mat.copyTo(G1_mat.colRange(0, 3).rowRange(0, 3));
     T_mat.copyTo(G1_mat.colRange(3, 4).rowRange(0, 3));
 
@@ -115,8 +79,8 @@ void CPSVision::getG2() {
 }
 
 cv::Mat CPSVision::computePose() {
-    cv::Mat P_mat = C_mat * G1_mat;
-    cv::Mat Q_mat = C_mat * G2_mat;
+    cv::Mat P_mat = C_mat * Gc_mat * G1_mat;
+    cv::Mat Q_mat = C_mat * Gc_mat * G2_mat;
     cv::Mat A_mat = cv::Mat::zeros(4, 4, CV_64FC1);
 
     double u1 = P1_mat.at<double>(0);
