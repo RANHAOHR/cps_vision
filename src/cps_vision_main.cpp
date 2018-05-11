@@ -40,8 +40,7 @@ bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
     cv::inRange(image, cv::Scalar(200, 100, 0), cv::Scalar(255,200,100), blueImage3);
     cv::inRange(image, cv::Scalar(20, 20, 0), cv::Scalar(100,100,20), blueImage1);
 
-//    threshold(blueImage, blueImage, 200, 255, THRESH_BINARY );
-//    blueImage = blueImage1 + blueImage2 + blueImage3 + blueImage4;
+
     cv::add(blueImage1, blueImage2, blueImage4);
     cv::add(blueImage3, blueImage4, blueImage);
 
@@ -81,15 +80,23 @@ cv::Mat matchPattern(char* filenames,const cv::Mat &rawImg ){
     cv::BFMatcher matcher(NORM_L2);
     std::vector<DMatch> matches;
     std::vector<DMatch> matches_filtered;
+//    matcher.knnMatch(descriptor_target,descriptor_raw,matches,2,noArray(),true);
     matcher.match(descriptor_target,descriptor_raw,matches,noArray());
-    for (int i = 0; i < matches.size(); ++i) {
 
-        if (matches[i].distance<0.1){
+    for (int i = 0; i < matches.size()-1; ++i) {
+        for (int j = i; j < matches.size(); ++j) {
+            if (matches[i].distance>matches[j].distance){
+                std::swap(matches[i],matches[j]);
+            }
+        }
+
+    }
+
+    for (int i = 0; i < matches.size()&& i<60; ++i) {
             matches_filtered.push_back(matches[i]);
 //            ROS_INFO_STREAM("matches: "<<matches[i].distance);
 //            ROS_INFO_STREAM("matches: "<<keypoints_2[matches[i].trainIdx].pt);
             filtered_pixels.push_back(keypoints_2[matches[i].trainIdx].pt);
-        }
         //ROS_INFO_STREAM("matches: "<<matches_filtered[i].distance);
     }
 
@@ -129,7 +136,8 @@ int main(int argc, char **argv) {
     //get image size from camera model, or initialize segmented images,
     cv::Mat raw_image = cv::Mat::zeros(480, 640, CV_8UC3);//this is 3 channel image
 
-//    raw_image = imread("/home/ranhao/ros_ws/src/cps_vision/raw2.jpg",IMREAD_COLOR);
+    //raw_image = imread("/home/ranhao/ros_ws/src/cps_vision/new3"
+//                               ".jpg",IMREAD_COLOR);
 //    Size size(480,640);
 //    resize(raw_image,raw_image,size);
 //    cv::imshow("raw image ", raw_image);
@@ -142,7 +150,7 @@ int main(int argc, char **argv) {
 ////            ROS_INFO_STREAM("RGB c3: "<< (int)pixel.val[2]);
 ////        }
 ////    }
-//
+
 //    cv::Mat blueImage = cv::Mat::zeros(480, 640, CV_8UC1);
 //    findTarget(raw_image, blueImage);
 //    matchPattern("/home/ranhao/ros_ws/src/cps_vision/object.jpg",blueImage);
