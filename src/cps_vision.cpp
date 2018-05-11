@@ -134,23 +134,6 @@ cv::Mat CPSVision::computePose() {
     temp_mat = v2 * Q_mat.colRange(0, 4).rowRange(2, 3) - Q_mat.colRange(0, 4).rowRange(1, 2);
     temp_mat.copyTo(A_mat.colRange(0, 4).rowRange(3, 4));
 
-    // A_mat.at<double>(0,0) = P1_mat.at<double>(0) * P_mat.at<double>(2,0) - P_mat.at<double>(0,0);
-    // A_mat.at<double>(0,1) = P1_mat.at<double>(0) * P_mat.at<double>(2,1) - P_mat.at<double>(0,1);
-    // A_mat.at<double>(0,2) = P1_mat.at<double>(0) * P_mat.at<double>(2,2) - P_mat.at<double>(0,2);
-    // A_mat.at<double>(0,3) = P1_mat.at<double>(0) * P_mat.at<double>(2,3) - P_mat.at<double>(0,3);
-    // A_mat.at<double>(1,0) = P1_mat.at<double>(1) * P_mat.at<double>(2,0) - P_mat.at<double>(1,0);
-    // A_mat.at<double>(1,1) = P1_mat.at<double>(1) * P_mat.at<double>(2,1) - P_mat.at<double>(1,1);
-    // A_mat.at<double>(1,2) = P1_mat.at<double>(1) * P_mat.at<double>(2,2) - P_mat.at<double>(1,2);
-    // A_mat.at<double>(1,3) = P1_mat.at<double>(1) * P_mat.at<double>(2,3) - P_mat.at<double>(1,3);
-    // A_mat.at<double>(2,0) = P2_mat.at<double>(0) * P_mat.at<double>(2,0) - P_mat.at<double>(0,0);
-    // A_mat.at<double>(2,1) = P2_mat.at<double>(0) * P_mat.at<double>(2,1) - P_mat.at<double>(0,1);
-    // A_mat.at<double>(2,2) = P2_mat.at<double>(0) * P_mat.at<double>(2,2) - P_mat.at<double>(0,2);
-    // A_mat.at<double>(2,3) = P2_mat.at<double>(0) * P_mat.at<double>(2,3) - P_mat.at<double>(0,3);
-    // A_mat.at<double>(3,0) = P2_mat.at<double>(1) * P_mat.at<double>(2,0) - P_mat.at<double>(1,0);
-    // A_mat.at<double>(3,1) = P2_mat.at<double>(1) * P_mat.at<double>(2,1) - P_mat.at<double>(1,1);
-    // A_mat.at<double>(3,2) = P2_mat.at<double>(1) * P_mat.at<double>(2,2) - P_mat.at<double>(1,2);
-    // A_mat.at<double>(3,3) = P2_mat.at<double>(1) * P_mat.at<double>(2,3) - P_mat.at<double>(1,3);
-
     cv::Mat target_position = cv::Mat::zeros(4, 1, CV_64FC1);
     cv::Mat resulting_position = cv::Mat::zeros(4, 1, CV_64FC1);
     cv::SVD svd = cv::SVD(A_mat);

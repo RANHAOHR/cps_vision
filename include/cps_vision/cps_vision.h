@@ -93,9 +93,6 @@ private:
 
     bool freshCameraInfo;
 
-    cv::Mat P1_mat;
-    cv::Mat P2_mat;
-
     cv::Mat G1_mat;
     cv::Mat G2_mat;
 
@@ -124,6 +121,9 @@ public:
 	 * @brief- The deconstructor
 	 */
 	~CPSVision();
+
+    cv::Mat P1_mat;
+    cv::Mat P2_mat;
 
 	void getLocation1(const cv::Mat &image);
 
