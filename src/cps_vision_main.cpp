@@ -35,21 +35,22 @@ bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
     cv::Mat blueImage2 = cv::Mat::zeros(480, 640, CV_8UC1);
     cv::Mat blueImage3 = cv::Mat::zeros(480, 640, CV_8UC1);
     cv::Mat blueImage4 = cv::Mat::zeros(480, 640, CV_8UC1);
-//	cv::inRange(image, cv::Scalar(30, 30, 0), cv::Scalar(100,100,0), blueImage1);   // 30, 30, 0   100, 100, 0 object
-    cv::inRange(image, cv::Scalar(100, 20, 0), cv::Scalar(200,100,100), blueImage2); //100, 20 ,0  200, 100, 100
-    cv::inRange(image, cv::Scalar(200, 100, 0), cv::Scalar(255,200,100), blueImage3);
-    cv::inRange(image, cv::Scalar(20, 20, 0), cv::Scalar(100,100,20), blueImage1);
+	cv::inRange(image, cv::Scalar(100, 110, 50), cv::Scalar(200,200,100), blueImage4);   // 100, 60, 50   200, 200, 100 object
+    cv::inRange(image, cv::Scalar(100, 20, 0), cv::Scalar(200,100,60), blueImage1); //100, 20 ,0  200, 100, 100 new1
+    cv::inRange(image, cv::Scalar(200, 100, 0), cv::Scalar(255,200,100), blueImage2);  // new2
+    cv::inRange(image, cv::Scalar(20, 20, 0), cv::Scalar(100,100,10), blueImage3);  //new11
 
 
-    cv::add(blueImage1, blueImage2, blueImage4);
-    cv::add(blueImage3, blueImage4, blueImage);
+    cv::add(blueImage1, blueImage2, blueImage);
+    cv::add(blueImage3, blueImage, blueImage);
+    cv::add(blueImage4, blueImage, blueImage);
 
 	imshow("Image with only blue pixel", blueImage);
 	cv::waitKey();
 	ROS_INFO_STREAM("Total "<< cv::countNonZero(blueImage) << "  blue pixels");
 
 	// Need to be determined.
-	return cv::countNonZero(blueImage) > 30;
+	return cv::countNonZero(blueImage) > 100;
 }
 
 cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
@@ -66,6 +67,8 @@ cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
         ROS_INFO_STREAM("Error reading images ");
     }
 
+
+    ROS_INFO("ros info 2");
    // cv::SiftFeatureDetector detector;
     int minHessian = 300; //threshold
     Ptr<cv::xfeatures2d::SURF> detector = cv::xfeatures2d::SURF::create(minHessian);
@@ -80,9 +83,12 @@ cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
     cv::BFMatcher matcher(NORM_L2);
     std::vector<DMatch> matches;
     std::vector<DMatch> matches_filtered;
+
+    ROS_INFO("ros info 3");
 //    matcher.knnMatch(descriptor_target,descriptor_raw,matches,2,noArray(),true);
     matcher.match(descriptor_target,descriptor_raw,matches,noArray());
 
+    ROS_INFO("ros info 4");
     for (int i = 0; i < matches.size()-1; ++i) {
         for (int j = i; j < matches.size(); ++j) {
             if (matches[i].distance>matches[j].distance){
@@ -139,34 +145,34 @@ ROS_INFO_STREAM("model_path: "<< model_path);
     //get image size from camera model, or initialize segmented images,
     cv::Mat raw_image = cv::Mat::zeros(480, 640, CV_8UC3);//this is 3 channel image
 
-    //raw_image = imread("/home/ranhao/ros_ws/src/cps_vision/new3"
-//                               ".jpg",IMREAD_COLOR);
-//    Size size(480,640);
-//    resize(raw_image,raw_image,size);
-//    cv::imshow("raw image ", raw_image);
-//    cv::waitKey(10);
-////    for(int row = 0; row < raw_image.rows; row++){
-////        for(int col = 0; col < raw_image.cols; col++){
-////            Vec3b pixel = raw_image.at<Vec3b>(row,col);
-////            ROS_INFO_STREAM("RGB c1: "<< (int)pixel.val[0]);
-////            ROS_INFO_STREAM("RGB c2: "<< (int)pixel.val[1]);
-////            ROS_INFO_STREAM("RGB c3: "<< (int)pixel.val[2]);
-////        }
-////    }
-
-//    cv::Mat blueImage = cv::Mat::zeros(480, 640, CV_8UC1);
-//    findTarget(raw_image, blueImage);
-//    matchPattern("/home/ranhao/ros_ws/src/cps_vision/object.jpg",blueImage);
-    // get the image that contains only blue pixels.
+    raw_image = imread("/home/ranhao/ros_ws/src/cps_vision/all"
+                               ".png",IMREAD_COLOR);
+    Size size(480,640);
+    resize(raw_image,raw_image,size);
+    cv::imshow("raw image ", raw_image);
+    cv::waitKey(10);
+//    for(int row = 0; row < raw_image.rows; row++){
+//        for(int col = 0; col < raw_image.cols; col++){
+//            Vec3b pixel = raw_image.at<Vec3b>(row,col);
+//            ROS_INFO_STREAM("RGB c1: "<< (int)pixel.val[0]);
+//            ROS_INFO_STREAM("RGB c2: "<< (int)pixel.val[1]);
+//            ROS_INFO_STREAM("RGB c3: "<< (int)pixel.val[2]);
+//        }
+//    }
 
     cv::Mat blueImage = cv::Mat::zeros(480, 640, CV_8UC1);
-    image_transport::ImageTransport it(nh);
-    image_transport::Subscriber img_sub_l = it.subscribe(
-            "/camera/rgb/image_raw", 1, boost::function<void(const sensor_msgs::ImageConstPtr &)>(boost::bind(newImageCallback, _1, &raw_image)));
+    if(findTarget(raw_image, blueImage))
+        matchPattern("/home/ranhao/ros_ws/src/cps_vision/object.jpg",blueImage);
+    // get the image that contains only blue pixels.
+
+//    cv::Mat blueImage = cv::Mat::zeros(480, 640, CV_8UC1);
+//    image_transport::ImageTransport it(nh);
+//    image_transport::Subscriber img_sub_l = it.subscribe(
+//            "/camera/rgb/image_raw", 1, boost::function<void(const sensor_msgs::ImageConstPtr &)>(boost::bind(newImageCallback, _1, &raw_image)));
 
     ROS_INFO("---- done subscribe -----");
     ros::Duration(1).sleep();
-
+/*
 	while (nh.ok()) {
 		ros::spinOnce();
 		// if camera is ready, track segmented image
@@ -187,7 +193,7 @@ ROS_INFO_STREAM("model_path: "<< model_path);
 		//			ROS_INFO_STREAM("RGB c3: "<< (int)pixel(3));
 		//		}
 		//	}
-		//	/*when getting new image, do somthing*/
+		//	when getting new image, do somthing
 			if(findTarget(raw_image, blueImage)){
 				ROS_INFO("target found 1");
                 CPSVision.P1_mat = matchPattern(model_path, blueImage);
@@ -216,6 +222,6 @@ ROS_INFO_STREAM("model_path: "<< model_path);
 		}
 
 	}
-
+*/
 	return 0;
 }
