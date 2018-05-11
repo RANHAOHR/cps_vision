@@ -44,8 +44,8 @@ bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
     cv::add(blueImage1, blueImage2, blueImage4);
     cv::add(blueImage3, blueImage4, blueImage);
 
-	imshow("Image with only blue pixel", blueImage);
-	cv::waitKey();
+	//imshow("Image with only blue pixel", blueImage);
+	//cv::waitKey(10);
 	ROS_INFO_STREAM("Total "<< cv::countNonZero(blueImage) << "  blue pixels");
 
 	// Need to be determined.
@@ -117,7 +117,7 @@ cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
     cv::Mat match_mat;
     cv::drawMatches(targetImg, keypoints_1,rawImg,keypoints_2,matches_filtered,match_mat);
     imshow("matches image", match_mat);
-    cv::waitKey();
+    cv::waitKey(10);
 
     return position_pixel;
 }
@@ -190,7 +190,6 @@ int main(int argc, char **argv) {
 			if(findTarget(raw_image, blueImage)){
 				ROS_INFO("target found 1");
                 CPSVision.P1_mat = matchPattern(model_path, blueImage);
-                ROS_INFO_STREAM("CPSVision.P1_mat"<<CPSVision.P1_mat);
             	CPSVision.getG1();
                 ros::Duration(1).sleep();
 

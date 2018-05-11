@@ -52,46 +52,6 @@ void CPSVision::projectionMatCB(const sensor_msgs::CameraInfo::ConstPtr &project
 
 }
 
-
-void CPSVision::getLocation1(const cv::Mat &image){
-	double sum_row = 0;
-	double sum_col = 0;
-	int count = 0;
-	for(int row = 0; row < image.rows; row++){
-		for(int col = 0; col < image.cols; col++){
-			//ROS_INFO_STREAM("image.at<uchar>(row, col)"<< (int)image.at<uchar>(row, col));
-			if((int)image.at<uchar>(row, col) != 0){
-				sum_row += row;
-				sum_col += col;
-				count++;
-			}
-		}
-	}
-	P1_mat.at<double>(0) = sum_row / count;
-	P1_mat.at<double>(1) = sum_col / count;
-	P1_mat.at<double>(2) = 1;
-    ROS_INFO_STREAM("P1 MATRIX"<<P1_mat);
-}
-void CPSVision::getLocation2(const cv::Mat &image){
-	double sum_row = 0;
-	double sum_col = 0;
-	int count = 0;
-	for(int row = 0; row < image.rows; row++){
-		for(int col = 0; col < image.cols; col++){
-			//ROS_INFO_STREAM("image.at<uchar>(row, col)"<< (int)image.at<uchar>(row, col));
-			if((int)image.at<uchar>(row, col) != 0){
-				sum_row += row;
-				sum_col += col;
-				count++;
-			}
-		}
-	}
-	P2_mat.at<double>(0) = sum_row / count;
-	P2_mat.at<double>(1) = sum_col / count;
-	P2_mat.at<double>(2) = 1;
-    ROS_INFO_STREAM("P2 MATRIX"<<P2_mat);
-}
-
 void CPSVision::getPose(const nav_msgs::Odometry::ConstPtr &pose) {
     cv::Mat vect3 = cv::Mat::zeros(3,1,CV_64FC1);
     double angle = 2*acos(pose->pose.pose.orientation.w);
