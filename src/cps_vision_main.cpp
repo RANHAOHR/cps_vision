@@ -112,8 +112,8 @@ int main(int argc, char **argv) {
 		// if camera is ready, track segmented image
 		if (freshImage) {
 			ros::spinOnce();
-            CPSVision.getG1(); // get the pose when taking the first image
-			cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
+            cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
+            CPSVision.getG1(); // get the pose, for getting the T mat and R mat
             /*
              * old strategy of giving global position 
 
@@ -148,7 +148,7 @@ int main(int argc, char **argv) {
 				}
 			}else{marker_exist.data = 0;}  // didn't find blueImage in the first time
             */
-            if (findTarget(raw_image, blueImage))
+            if (findTarget(raw_image, blueImage) && CPSVision.freshpose)
             {
                 ROS_INFO("target found");
                 match = CPSVision.matchPattern(model_path, blueImage);
@@ -166,7 +166,9 @@ int main(int argc, char **argv) {
                     marker_exist.data = 0;  // the 2nd one didn't find target
                 }
 
-            }else{marker_exist.data = 0;} 
+            }else{
+                // ROS_INFO_STREAM("NO fresh image of No fresh Pose!");
+                marker_exist.data = 0;} 
 
             marker_flag.publish(marker_exist);
             marker_position.publish(marker_position_data);

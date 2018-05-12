@@ -126,6 +126,8 @@ public:
 	 */
 	~CPSVision();
 
+    bool freshpose;
+
     cv::Mat P1_mat;
     cv::Mat P2_mat;
     cv::Mat pixel_mat;  //use this for the relative position computation

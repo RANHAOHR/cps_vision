@@ -27,6 +27,7 @@ CPSVision::CPSVision(ros::NodeHandle *nodehandle):
 	    						0, 	   0,  0, 	1);
 
     freshCameraInfo = false;
+    freshpose = false;
 
 };
 
@@ -49,7 +50,7 @@ void CPSVision::projectionMatCB(const sensor_msgs::CameraInfo::ConstPtr &project
     C_mat.at<double>(2,1) = projectionRight->P[9];
     C_mat.at<double>(2,2) = projectionRight->P[10];
     C_mat.at<double>(2,3) = projectionRight->P[11];
-    //ROS_INFO_STREAM("C MATRIX"<<C_mat);
+    // ROS_INFO_STREAM("C MATRIX"<<C_mat);
 
 }
 
@@ -64,6 +65,8 @@ void CPSVision::getPose(const nav_msgs::Odometry::ConstPtr &pose) {
     T_mat.at<double>(0,0) = pose->pose.pose.position.x;
     T_mat.at<double>(1,0) = pose->pose.pose.position.y;
     T_mat.at<double>(2,0) = pose->pose.pose.position.z;
+    freshpose = true;
+    // ROS_INFO_STREAM("T MAT: "<< T_mat);
 }
 
 
