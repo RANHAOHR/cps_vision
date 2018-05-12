@@ -66,8 +66,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5af087c3-02d6-4e92-9828-76207c59a5b2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/new11.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cps_vision_main.cpp" afterPath="$PROJECT_DIR$/src/cps_vision_main.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -83,10 +81,11 @@
       <file leaf-file-name="cps_vision_main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cps_vision_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="147" column="29" lean-forward="true" selection-start-line="147" selection-start-column="29" selection-end-line="147" selection-end-column="29" />
+            <state relative-caret-position="475">
+              <caret line="216" column="31" lean-forward="true" selection-start-line="216" selection-start-column="31" selection-end-line="216" selection-end-column="31" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+                <marker date="1526094420353" expanded="true" signature="1842:1909" ph="..." />
               </folding>
             </state>
           </provider>
@@ -475,7 +474,7 @@
       <option name="presentableId" value="Default" />
       <updated>1525880737499</updated>
       <workItem from="1525880738634" duration="45732000" />
-      <workItem from="1526003921726" duration="25536000" />
+      <workItem from="1526003921726" duration="26674000" />
     </task>
     <task id="LOCAL-00001" summary="version1_5/9">
       <created>1525901884630</created>
@@ -495,7 +494,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71268000" />
+    <option name="totallyTimeSpent" value="72406000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2212" y="24" width="1857" height="1092" extended-state="6" />
@@ -546,6 +545,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
+            <marker date="1526094420353" expanded="true" signature="1842:1909" ph="..." />
           </folding>
         </state>
       </provider>
@@ -614,10 +614,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cps_vision_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="147" column="29" lean-forward="true" selection-start-line="147" selection-start-column="29" selection-end-line="147" selection-end-column="29" />
+        <state relative-caret-position="475">
+          <caret line="216" column="31" lean-forward="true" selection-start-line="216" selection-start-column="31" selection-end-line="216" selection-end-column="31" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
+            <marker date="1526094420353" expanded="true" signature="1842:1909" ph="..." />
           </folding>
         </state>
       </provider>

@@ -51,12 +51,11 @@ bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
     cv::add(blueImage3, blueImage, blueImage);
     cv::add(blueImage4, blueImage, blueImage);
 
-	imshow("Image with only blue pixel", blueImage);
-	cv::waitKey();
-	ROS_INFO_STREAM("Total "<< cv::countNonZero(blueImage) << "  blue pixels");
+//	imshow("Image with only blue pixel", blueImage);
+//	cv::waitKey();
 
 	// Need to be determined.
-	return cv::countNonZero(blueImage) > 50;
+	return cv::countNonZero(blueImage) > 100;
 }
 
 cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
@@ -67,20 +66,13 @@ cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
     cv::Mat targetImg = cv::Mat::zeros(480, 640, CV_8UC3);
     targetImg = imread(filenames, IMREAD_GRAYSCALE); //FIXME filename
     Size size(480,640);
-
     resize(targetImg,targetImg,size);
-    if (!targetImg.data || !rawImg.data){
-        ROS_INFO_STREAM("Error reading images ");
-    }
-
-   // cv::SiftFeatureDetector detector;
     int minHessian = 600; //threshold
     Ptr<cv::xfeatures2d::SURF> detector = cv::xfeatures2d::SURF::create(minHessian);
     std::vector<KeyPoint> keypoints_1, keypoints_2;
     detector->detect(targetImg, keypoints_1);
     detector->detect(rawImg, keypoints_2);
 
-    ROS_INFO_STREAM("HOW MANY KEY PTS: "<<keypoints_2.size());
     if(keypoints_2.size() > 0){
         cv::Mat descriptor_target, descriptor_raw;
         detector->compute(targetImg,keypoints_1, descriptor_target);
@@ -105,7 +97,6 @@ cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
             matches_filtered.push_back(matches[i]);
 //            ROS_INFO_STREAM("matches: "<<keypoints_2[matches[i].trainIdx].pt);
             filtered_pixels.push_back(keypoints_2[matches[i].trainIdx].pt);
-            //ROS_INFO_STREAM("matches: "<<matches_filtered[i].distance);
         }
 
         for (int j = 0; j < filtered_pixels.size(); ++j) {
@@ -124,7 +115,6 @@ cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
         cv::drawMatches(targetImg, keypoints_1,rawImg,keypoints_2,matches_filtered,match_mat);
         imshow("matches image", match_mat);
         cv::waitKey(10);
-
     }else{
         match = false;
     }
@@ -143,14 +133,14 @@ int main(int argc, char **argv) {
 
     freshImage = false;
     match = false; // the match flag to test if the blue marker is here
-    ros::Rate loop_rate(10); //loorate to sleep for publishers
+    ros::Rate loop_rate(10); //looprate to sleep for publishers
 
     std_msgs::Int32 marker_exist; //the marker flag data 1 or 0
     marker_exist.data = 0;
 
     std_msgs::Float64MultiArray marker_position_data; // the position to send to the control node
     marker_position_data.layout.dim.push_back(std_msgs::MultiArrayDimension()); // set up the size and other params of the position
-    marker_position_data.layout.dim[0].size = 2;
+    marker_position_data.layout.dim[0].size = 2; //size of 2 array
     marker_position_data.layout.dim[0].stride = 1;
     marker_position_data.layout.dim[0].label = "position";
 
@@ -162,18 +152,21 @@ int main(int argc, char **argv) {
 
     //get image size from camera model, or initialize segmented images,
     cv::Mat raw_image = cv::Mat::zeros(480, 640, CV_8UC3);//this is 3 channel image
+    /*
+     * for debugging
 
-//    raw_image = imread("/home/ranhao/ros_ws/src/cps_vision/bad2"
-//                               ".jpg",IMREAD_COLOR);
-//    Size size(480,640);
-//    resize(raw_image,raw_image,size);
-////    cv::imshow("raw image ", raw_image);
-////    cv::waitKey(10);
-//
-//    cv::Mat blueImage = cv::Mat::zeros(480, 640, CV_8UC1);
-//    if(findTarget(raw_image, blueImage))
-//        matchPattern("/home/ranhao/ros_ws/src/cps_vision/object.jpg",blueImage);
+    raw_image = imread("/home/ranhao/ros_ws/src/cps_vision/bad2"
+                               ".jpg",IMREAD_COLOR);
+    Size size(480,640);
+    resize(raw_image,raw_image,size);
+    cv::imshow("raw image ", raw_image);
+    cv::waitKey(10);
 
+    cv::Mat blueImage = cv::Mat::zeros(480, 640, CV_8UC1);
+    if(findTarget(raw_image, blueImage))
+        matchPattern("/home/ranhao/ros_ws/src/cps_vision/object.jpg",blueImage);
+
+    */
     cv::Mat blueImage = cv::Mat::zeros(480, 640, CV_8UC1);
     image_transport::ImageTransport it(nh);
     image_transport::Subscriber img_sub_l = it.subscribe(
@@ -186,28 +179,24 @@ int main(int argc, char **argv) {
 		// if camera is ready, track segmented image
 		if (freshImage) {
 			ros::spinOnce();
-            CPSVision.getG1();
+            CPSVision.getG1(); // get the pose when taking the first image
 			cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
-			//show what you see......
-			cv::imshow("raw image ", raw_image);
-            cv::waitKey(10);
-
 			if(findTarget(raw_image, blueImage)){ // use the screened image to detect the target 1st time
 				ROS_INFO("target found 1");
-                CPSVision.P1_mat = matchPattern(model_path, blueImage);
+                CPSVision.P1_mat = matchPattern(model_path, blueImage); //give a image point (u1, v1)
                 ros::Duration(1).sleep();
 
 				// take the second picture.
                 ros::spinOnce();
-                CPSVision.getG2();
+                CPSVision.getG2(); // get the pose when taking the 2nd image
 				cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
 
                 if(match && findTarget(raw_image, blueImage)) { // detect the target 2nd time, if the first one finds something
 					ROS_INFO("target found 2");
-                    CPSVision.P2_mat = matchPattern(model_path, blueImage);
-                    if(match){ //have keypoints matched
-                        cv::Mat marker_mat = CPSVision.computePose();
-                        marker_exist.data = 1;
+                    CPSVision.P2_mat = matchPattern(model_path, blueImage); // give a image point (u2, v2)
+                    if(match){ //have all the keypoints matched
+                        cv::Mat marker_mat = CPSVision.computePose(); // the 3D position of the marker in the view
+                        marker_exist.data = 1;  // report: find
                         ROS_INFO_STREAM("marker_mat"<< marker_mat);
 
                         marker_position_data.data.clear();
@@ -215,14 +204,13 @@ int main(int argc, char **argv) {
                         marker_position_data.data.push_back(marker_mat.at<double>(1,0));
 
                     }else{
-                        marker_exist.data = 0;
+                        marker_exist.data = 0;  // the 2nd one didn't find target
                     }
                 }else{
 					ROS_INFO("cannot find target in the 2nd image stream");
+                    marker_exist.data = 0; // didn't find the target in first image or didn't find the blueimage in the 2nd one
 				}
-
-			}
-
+			}else{marker_exist.data = 0;}  // didn't find blueImage in the first time
             marker_flag.publish(marker_exist);
             marker_position.publish(marker_position_data);
             loop_rate.sleep();
