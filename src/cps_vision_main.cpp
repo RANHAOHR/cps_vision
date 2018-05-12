@@ -66,7 +66,7 @@ int main(int argc, char **argv) {
 
     freshImage = false;
     match = false; // the match flag to test if the blue marker is here
-    ros::Rate loop_rate(10); //looprate to sleep for publishers
+    ros::Rate loop_rate(50); //looprate to sleep for publishers
 
     std_msgs::Int32 marker_exist; //the marker flag data 1 or 0
     marker_exist.data = 0;

@@ -194,7 +194,7 @@ cv::Point2d CPSVision::getRelativePosition(){
      * Notice this is a 3D rigid body transformation
     */
     relative_position.x = -c_y;
-    relative_position.y = -c_x;
+    relative_position.y = c_x;
 
     return relative_position;
 
