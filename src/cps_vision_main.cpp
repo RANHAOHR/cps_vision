@@ -51,12 +51,12 @@ bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
     cv::add(blueImage3, blueImage, blueImage);
     cv::add(blueImage4, blueImage, blueImage);
 
-//	imshow("Image with only blue pixel", blueImage);
-//	cv::waitKey();
+	imshow("Image with only blue pixel", blueImage);
+	cv::waitKey();
 	ROS_INFO_STREAM("Total "<< cv::countNonZero(blueImage) << "  blue pixels");
 
 	// Need to be determined.
-	return cv::countNonZero(blueImage) > 100;
+	return cv::countNonZero(blueImage) > 50;
 }
 
 cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
@@ -74,55 +74,60 @@ cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
     }
 
    // cv::SiftFeatureDetector detector;
-    int minHessian = 300; //threshold
+    int minHessian = 600; //threshold
     Ptr<cv::xfeatures2d::SURF> detector = cv::xfeatures2d::SURF::create(minHessian);
     std::vector<KeyPoint> keypoints_1, keypoints_2;
     detector->detect(targetImg, keypoints_1);
     detector->detect(rawImg, keypoints_2);
 
-    cv::Mat descriptor_target, descriptor_raw;
-    detector->compute(targetImg,keypoints_1, descriptor_target);
-    detector->compute(rawImg,keypoints_2, descriptor_raw);
+    ROS_INFO_STREAM("HOW MANY KEY PTS: "<<keypoints_2.size());
+    if(keypoints_2.size() > 0){
+        cv::Mat descriptor_target, descriptor_raw;
+        detector->compute(targetImg,keypoints_1, descriptor_target);
+        detector->compute(rawImg,keypoints_2, descriptor_raw);
 
-    cv::BFMatcher matcher(NORM_L2);
-    std::vector<DMatch> matches;
-    std::vector<DMatch> matches_filtered;
+        cv::BFMatcher matcher(NORM_L2);
+        std::vector<DMatch> matches;
+        std::vector<DMatch> matches_filtered;
 //    matcher.knnMatch(descriptor_target,descriptor_raw,matches,2,noArray(),true);
-    matcher.match(descriptor_target,descriptor_raw,matches,noArray());
+        matcher.match(descriptor_target,descriptor_raw,matches,noArray());
 
-    for (int i = 0; i < matches.size()-1; ++i) {
-        for (int j = i; j < matches.size(); ++j) {
-            if (matches[i].distance>matches[j].distance){
-                std::swap(matches[i],matches[j]);
+        for (int i = 0; i < matches.size()-1; ++i) {
+            for (int j = i; j < matches.size(); ++j) {
+                if (matches[i].distance>matches[j].distance){
+                    std::swap(matches[i],matches[j]);
+                }
             }
+
         }
 
-    }
-
-    for (int i = 0; i < matches.size()&& i<60; ++i) {
+        for (int i = 0; i < matches.size()&& i<60; ++i) {
             matches_filtered.push_back(matches[i]);
 //            ROS_INFO_STREAM("matches: "<<keypoints_2[matches[i].trainIdx].pt);
             filtered_pixels.push_back(keypoints_2[matches[i].trainIdx].pt);
-        //ROS_INFO_STREAM("matches: "<<matches_filtered[i].distance);
+            //ROS_INFO_STREAM("matches: "<<matches_filtered[i].distance);
+        }
+
+        for (int j = 0; j < filtered_pixels.size(); ++j) {
+            position_pixel.at<float>(0,0) += filtered_pixels[j].x;
+            position_pixel.at<float>(1,0) += filtered_pixels[j].y;
+        }
+
+        if(filtered_pixels.size() > 0){
+            position_pixel.at<float>(0,0) /= filtered_pixels.size();
+            position_pixel.at<float>(1,0) /= filtered_pixels.size();
+            position_pixel.at<float>(2,0) = 1;
+            match = true;
+        }else{match = false;}
+
+        cv::Mat match_mat;
+        cv::drawMatches(targetImg, keypoints_1,rawImg,keypoints_2,matches_filtered,match_mat);
+        imshow("matches image", match_mat);
+        cv::waitKey(10);
+
+    }else{
+        match = false;
     }
-
-
-    for (int j = 0; j < filtered_pixels.size(); ++j) {
-        position_pixel.at<float>(0,0) += filtered_pixels[j].x;
-        position_pixel.at<float>(1,0) += filtered_pixels[j].y;
-    }
-
-    if(filtered_pixels.size() > 0){
-        position_pixel.at<float>(0,0) /= filtered_pixels.size();
-        position_pixel.at<float>(1,0) /= filtered_pixels.size();
-        position_pixel.at<float>(2,0) = 1;
-        match = true;
-    }else{match = false;}
-
-    cv::Mat match_mat;
-    cv::drawMatches(targetImg, keypoints_1,rawImg,keypoints_2,matches_filtered,match_mat);
-    imshow("matches image", match_mat);
-    cv::waitKey(10);
 
     return position_pixel;
 }
@@ -141,7 +146,7 @@ int main(int argc, char **argv) {
     ros::Rate loop_rate(10); //loorate to sleep for publishers
 
     std_msgs::Int32 marker_exist; //the marker flag data 1 or 0
-    marker_exist.data = 0; //initialize it
+    marker_exist.data = 0;
 
     std_msgs::Float64MultiArray marker_position_data; // the position to send to the control node
     marker_position_data.layout.dim.push_back(std_msgs::MultiArrayDimension()); // set up the size and other params of the position
@@ -158,7 +163,7 @@ int main(int argc, char **argv) {
     //get image size from camera model, or initialize segmented images,
     cv::Mat raw_image = cv::Mat::zeros(480, 640, CV_8UC3);//this is 3 channel image
 
-//    raw_image = imread("/home/ranhao/ros_ws/src/cps_vision/cover2"
+//    raw_image = imread("/home/ranhao/ros_ws/src/cps_vision/bad2"
 //                               ".jpg",IMREAD_COLOR);
 //    Size size(480,640);
 //    resize(raw_image,raw_image,size);
@@ -181,6 +186,7 @@ int main(int argc, char **argv) {
 		// if camera is ready, track segmented image
 		if (freshImage) {
 			ros::spinOnce();
+            CPSVision.getG1();
 			cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
 			//show what you see......
 			cv::imshow("raw image ", raw_image);
@@ -189,17 +195,16 @@ int main(int argc, char **argv) {
 			if(findTarget(raw_image, blueImage)){ // use the screened image to detect the target 1st time
 				ROS_INFO("target found 1");
                 CPSVision.P1_mat = matchPattern(model_path, blueImage);
-            	CPSVision.getG1();
                 ros::Duration(1).sleep();
 
 				// take the second picture.
                 ros::spinOnce();
+                CPSVision.getG2();
 				cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
 
-                if(findTarget(raw_image, blueImage)) { // detect the target 2nd time
+                if(match && findTarget(raw_image, blueImage)) { // detect the target 2nd time, if the first one finds something
 					ROS_INFO("target found 2");
                     CPSVision.P2_mat = matchPattern(model_path, blueImage);
-                    CPSVision.getG2();
                     if(match){ //have keypoints matched
                         cv::Mat marker_mat = CPSVision.computePose();
                         marker_exist.data = 1;
@@ -212,7 +217,6 @@ int main(int argc, char **argv) {
                     }else{
                         marker_exist.data = 0;
                     }
-
                 }else{
 					ROS_INFO("cannot find target in the 2nd image stream");
 				}
