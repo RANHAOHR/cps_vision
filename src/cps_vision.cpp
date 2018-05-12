@@ -184,9 +184,17 @@ cv::Mat CPSVision::computeGlobalPose() {
 
 
 cv::Point2d CPSVision::getRelativePosition(){
-    cv::Point2d relative_position;
-    relative_position.x = T_mat.at<double>(2,0) * (pixel_mat.at<float>(0,0) - C_mat.at<double>(0,2)) / C_mat.at<double>(0,0);
-    relative_position.y = T_mat.at<double>(2,0) * (pixel_mat.at<float>(1,0) - C_mat.at<double>(1,2)) / C_mat.at<double>(1,1);
+    cv::Point2d relative_position; // the relative position according to drone's body frame
+    double c_x = T_mat.at<double>(2,0) * (pixel_mat.at<float>(0,0) - C_mat.at<double>(0,2)) / C_mat.at<double>(0,0);
+    double c_y = T_mat.at<double>(2,0) * (pixel_mat.at<float>(1,0) - C_mat.at<double>(1,2)) / C_mat.at<double>(1,1);
+
+    /* do a transformation to drone coordinate 
+     * for camera, z is point outwards against the shot, 
+     * which should be the opposite direction to the drone's z when facing the camera to the ground 
+     * Notice this is a 3D rigid body transformation
+    */
+    relative_position.x = -c_y;
+    relative_position.y = -c_x;
 
     return relative_position;
 
