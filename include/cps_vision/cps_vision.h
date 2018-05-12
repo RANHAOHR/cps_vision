@@ -51,6 +51,9 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <opencv2/features2d.hpp>
+#include <opencv2/xfeatures2d.hpp>
+
 #include <sensor_msgs/image_encodings.h>
 #include <sensor_msgs/CameraInfo.h>
 #include <geometry_msgs/Vector3.h>
@@ -125,6 +128,7 @@ public:
 
     cv::Mat P1_mat;
     cv::Mat P2_mat;
+    cv::Mat pixel_mat;  //use this for the relative position computation
 
     void getPose(const nav_msgs::Odometry::ConstPtr &pose);
 
@@ -132,7 +136,11 @@ public:
 
     void getG2();
 
-    cv::Mat computePose();
+    bool matchPattern(std::string filenames,const cv::Mat &rawImg );
+
+    cv::Mat computeGlobalPose();
+
+    cv::Point2d getRelativePosition();
 };
 
 #endif

@@ -2,7 +2,7 @@
 #include <opencv/cv.hpp>
 
 using namespace std;
-
+using namespace cv;
 CPSVision::CPSVision(ros::NodeHandle *nodehandle):
         node_handle(*nodehandle){
     projectionMat_subscriber = node_handle.subscribe("/camera/rgb/camera_info", 1, &CPSVision::projectionMatCB, this);
@@ -14,6 +14,7 @@ CPSVision::CPSVision(ros::NodeHandle *nodehandle):
 
     P1_mat = cv::Mat::zeros(3, 1, CV_32FC1);
     P2_mat = cv::Mat::zeros(3, 1, CV_32FC1);
+    pixel_mat = cv::Mat::zeros(3, 1, CV_32FC1);
 
     R_mat = cv::Mat::zeros(3, 3, CV_64FC1);
     T_mat = cv::Mat::zeros(3, 1, CV_64FC1);
@@ -78,7 +79,79 @@ void CPSVision::getG2() {
   T_mat.copyTo(G2_mat.colRange(3, 4).rowRange(0, 3));
 }
 
-cv::Mat CPSVision::computePose() {
+
+bool CPSVision::matchPattern(std::string filenames,const cv::Mat &rawImg){
+
+    bool match = false;
+
+    std::vector<cv::Point2f> filtered_pixels;
+    cv::Mat position_pixel = cv::Mat::zeros(3, 1, CV_32FC1);
+
+    cv::Mat targetImg = cv::Mat::zeros(480, 640, CV_8UC3);
+    targetImg = imread(filenames, IMREAD_GRAYSCALE); //FIXME filename
+    Size size(480,640);
+    resize(targetImg,targetImg,size);
+    int minHessian = 600; //threshold
+    Ptr<cv::xfeatures2d::SURF> detector = cv::xfeatures2d::SURF::create(minHessian);
+    std::vector<cv::KeyPoint> keypoints_1, keypoints_2;
+    detector->detect(targetImg, keypoints_1);
+    detector->detect(rawImg, keypoints_2);
+
+    if(keypoints_2.size() > 0){
+        cv::Mat descriptor_target, descriptor_raw;
+        detector->compute(targetImg,keypoints_1, descriptor_target);
+        detector->compute(rawImg,keypoints_2, descriptor_raw);
+
+        cv::BFMatcher matcher(NORM_L2);
+        std::vector<DMatch> matches;
+        std::vector<DMatch> matches_filtered;
+//    matcher.knnMatch(descriptor_target,descriptor_raw,matches,2,noArray(),true);
+        matcher.match(descriptor_target,descriptor_raw,matches,noArray());
+
+        for (int i = 0; i < matches.size()-1; ++i) {
+            for (int j = i; j < matches.size(); ++j) {
+                if (matches[i].distance>matches[j].distance){
+                    std::swap(matches[i],matches[j]);
+                }
+            }
+
+        }
+
+        for (int i = 0; i < matches.size()&& i<60; ++i) {
+            matches_filtered.push_back(matches[i]);
+//            ROS_INFO_STREAM("matches: "<<keypoints_2[matches[i].trainIdx].pt);
+            filtered_pixels.push_back(keypoints_2[matches[i].trainIdx].pt);
+        }
+
+        for (int j = 0; j < filtered_pixels.size(); ++j) {
+            position_pixel.at<float>(0,0) += filtered_pixels[j].x;
+            position_pixel.at<float>(1,0) += filtered_pixels[j].y;
+        }
+
+        if(filtered_pixels.size() > 0){
+            position_pixel.at<float>(0,0) /= filtered_pixels.size();
+            position_pixel.at<float>(1,0) /= filtered_pixels.size();
+            position_pixel.at<float>(2,0) = 1;
+            match = true;
+        }else{match = false;}
+
+        cv::Mat match_mat;
+        cv::drawMatches(targetImg, keypoints_1,rawImg,keypoints_2,matches_filtered,match_mat);
+        imshow("matches image", match_mat);
+        cv::waitKey(10);
+    }else{
+        match = false;
+    }
+
+    pixel_mat = position_pixel.clone();
+    P1_mat = position_pixel.clone();
+    P1_mat = position_pixel.clone();
+
+    return match;
+}
+
+
+cv::Mat CPSVision::computeGlobalPose() {
     cv::Mat P_mat = C_mat * Gc_mat * G1_mat;
     cv::Mat Q_mat = C_mat * Gc_mat * G2_mat;
     cv::Mat A_mat = cv::Mat::zeros(4, 4, CV_64FC1);
@@ -107,4 +180,14 @@ cv::Mat CPSVision::computePose() {
     ROS_INFO_STREAM("Reported posistion is: " << target_position);
 
     return target_position;
+}
+
+
+cv::Point2d CPSVision::getRelativePosition(){
+    cv::Point2d relative_position;
+    relative_position.x = T_mat.at<double>(2,0) * (pixel_mat.at<float>(0,0) - C_mat.at<double>(0,2)) / C_mat.at<double>(0,0);
+    relative_position.y = T_mat.at<double>(2,0) * (pixel_mat.at<float>(1,0) - C_mat.at<double>(1,2)) / C_mat.at<double>(1,1);
+
+    return relative_position;
+
 }

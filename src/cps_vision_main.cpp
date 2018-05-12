@@ -3,8 +3,6 @@
 #include <image_transport/image_transport.h>
 #include <cwru_opencv_common/projective_geometry.h>
 #include <cps_vision/cps_vision.h>
-#include <opencv2/features2d.hpp>
-#include <opencv2/xfeatures2d.hpp>
 
 #include <ros/package.h>
 #include <std_msgs/MultiArrayLayout.h>
@@ -57,71 +55,6 @@ bool findTarget(const cv::Mat &image,cv::Mat &blueImage){
 	// Need to be determined.
 	return cv::countNonZero(blueImage) > 100;
 }
-
-cv::Mat matchPattern(string filenames,const cv::Mat &rawImg ){
-
-    std::vector<Point2f> filtered_pixels;
-    cv::Mat position_pixel = cv::Mat::zeros(3, 1, CV_32FC1);
-
-    cv::Mat targetImg = cv::Mat::zeros(480, 640, CV_8UC3);
-    targetImg = imread(filenames, IMREAD_GRAYSCALE); //FIXME filename
-    Size size(480,640);
-    resize(targetImg,targetImg,size);
-    int minHessian = 600; //threshold
-    Ptr<cv::xfeatures2d::SURF> detector = cv::xfeatures2d::SURF::create(minHessian);
-    std::vector<KeyPoint> keypoints_1, keypoints_2;
-    detector->detect(targetImg, keypoints_1);
-    detector->detect(rawImg, keypoints_2);
-
-    if(keypoints_2.size() > 0){
-        cv::Mat descriptor_target, descriptor_raw;
-        detector->compute(targetImg,keypoints_1, descriptor_target);
-        detector->compute(rawImg,keypoints_2, descriptor_raw);
-
-        cv::BFMatcher matcher(NORM_L2);
-        std::vector<DMatch> matches;
-        std::vector<DMatch> matches_filtered;
-//    matcher.knnMatch(descriptor_target,descriptor_raw,matches,2,noArray(),true);
-        matcher.match(descriptor_target,descriptor_raw,matches,noArray());
-
-        for (int i = 0; i < matches.size()-1; ++i) {
-            for (int j = i; j < matches.size(); ++j) {
-                if (matches[i].distance>matches[j].distance){
-                    std::swap(matches[i],matches[j]);
-                }
-            }
-
-        }
-
-        for (int i = 0; i < matches.size()&& i<60; ++i) {
-            matches_filtered.push_back(matches[i]);
-//            ROS_INFO_STREAM("matches: "<<keypoints_2[matches[i].trainIdx].pt);
-            filtered_pixels.push_back(keypoints_2[matches[i].trainIdx].pt);
-        }
-
-        for (int j = 0; j < filtered_pixels.size(); ++j) {
-            position_pixel.at<float>(0,0) += filtered_pixels[j].x;
-            position_pixel.at<float>(1,0) += filtered_pixels[j].y;
-        }
-
-        if(filtered_pixels.size() > 0){
-            position_pixel.at<float>(0,0) /= filtered_pixels.size();
-            position_pixel.at<float>(1,0) /= filtered_pixels.size();
-            position_pixel.at<float>(2,0) = 1;
-            match = true;
-        }else{match = false;}
-
-        cv::Mat match_mat;
-        cv::drawMatches(targetImg, keypoints_1,rawImg,keypoints_2,matches_filtered,match_mat);
-        imshow("matches image", match_mat);
-        cv::waitKey(10);
-    }else{
-        match = false;
-    }
-
-    return position_pixel;
-}
-
 
 int main(int argc, char **argv) {
 
@@ -181,6 +114,9 @@ int main(int argc, char **argv) {
 			ros::spinOnce();
             CPSVision.getG1(); // get the pose when taking the first image
 			cv::cvtColor(raw_image, raw_image, CV_BGR2RGB);
+            /*
+             * old strategy of giving global position 
+
 			if(findTarget(raw_image, blueImage)){ // use the screened image to detect the target 1st time
 				ROS_INFO("target found 1");
                 CPSVision.P1_mat = matchPattern(model_path, blueImage); //give a image point (u1, v1)
@@ -211,6 +147,27 @@ int main(int argc, char **argv) {
                     marker_exist.data = 0; // didn't find the target in first image or didn't find the blueimage in the 2nd one
 				}
 			}else{marker_exist.data = 0;}  // didn't find blueImage in the first time
+            */
+            if (findTarget(raw_image, blueImage))
+            {
+                ROS_INFO("target found");
+                match = CPSVision.matchPattern(model_path, blueImage);
+                if(match){ //have all the keypoints matched
+                        Point2d rel_position;
+                        rel_position = CPSVision.getRelativePosition();
+                        marker_exist.data = 1;  // report: find
+                        ROS_INFO_STREAM("rel_position"<< rel_position);
+
+                        marker_position_data.data.clear();
+                        marker_position_data.data.push_back(rel_position.x);
+                        marker_position_data.data.push_back(rel_position.y);
+
+                }else{
+                    marker_exist.data = 0;  // the 2nd one didn't find target
+                }
+
+            }else{marker_exist.data = 0;} 
+
             marker_flag.publish(marker_exist);
             marker_position.publish(marker_position_data);
             loop_rate.sleep();
