@@ -14,5 +14,8 @@ image_pipeline: https://github.com/ros-perception/image_pipeline (for calibratio
 ## The transformation between the camera and the drone frame
 ![Alt text](/frames.png?raw=true)
 
-## Run
+## Run vision node:
 `rosrun cps_vision cps_vision`
+
+## Run data collection node:
+`rosrun cps_vision pic_collection`
