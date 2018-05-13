@@ -2,62 +2,62 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_py" />
-      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_cpp" />
-      <config projectName="cps_vision" targetName="std_msgs_generate_messages_nodejs" />
-      <config projectName="cps_vision" targetName="clean_test_results" />
-      <config projectName="cps_vision" targetName="_catkin_empty_exported_target" />
-      <config projectName="cps_vision" targetName="roscpp_generate_messages_py" />
-      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_eus" />
-      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_nodejs" />
-      <config projectName="cps_vision" targetName="doxygen" />
-      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_lisp" />
-      <config projectName="cps_vision" targetName="cps_vision_lib" />
-      <config projectName="cps_vision" targetName="roscpp_generate_messages_cpp" />
-      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_nodejs" />
       <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_eus" />
-      <config projectName="cps_vision" targetName="run_tests" />
-      <config projectName="cps_vision" targetName="gtest_main" />
-      <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_eus" />
-      <config projectName="cps_vision" targetName="roscpp_generate_messages_nodejs" />
-      <config projectName="cps_vision" targetName="std_msgs_generate_messages_lisp" />
-      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_cpp" />
-      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_nodejs" />
       <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_lisp" />
-      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_lisp" />
-      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_cpp" />
-      <config projectName="cps_vision" targetName="cps_vision" />
-      <config projectName="cps_vision" targetName="download_extra_data" />
-      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_nodejs" />
-      <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_py" />
-      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_nodejs" />
-      <config projectName="cps_vision" targetName="roscpp_generate_messages_lisp" />
-      <config projectName="cps_vision" targetName="std_msgs_generate_messages_eus" />
-      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_eus" />
-      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_py" />
-      <config projectName="cps_vision" targetName="tests" />
       <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_eus" />
-      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_lisp" />
-      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="roscpp_generate_messages_py" />
+      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="std_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="std_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_py" />
       <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_cpp" />
       <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_eus" />
-      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_cpp" />
-      <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_lisp" />
-      <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_lisp" />
-      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_py" />
-      <config projectName="cps_vision" targetName="gtest" />
-      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_cpp" />
-      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_eus" />
-      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_py" />
-      <config projectName="cps_vision" targetName="std_msgs_generate_messages_py" />
-      <config projectName="cps_vision" targetName="pic_collection" />
-      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_py" />
-      <config projectName="cps_vision" targetName="std_msgs_generate_messages_cpp" />
-      <config projectName="cps_vision" targetName="roscpp_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_nodejs" />
       <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_cpp" />
-      <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_py" />
       <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_nodejs" />
-      <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="roscpp_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="roscpp_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="sensor_msgs_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="geographic_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="mavros_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="pic_collection" />
+      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="gtest_main" />
+      <config projectName="cps_vision" targetName="cps_vision" />
+      <config projectName="cps_vision" targetName="download_extra_data" />
+      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_py" />
+      <config projectName="cps_vision" targetName="doxygen" />
+      <config projectName="cps_vision" targetName="run_tests" />
+      <config projectName="cps_vision" targetName="std_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_cpp" />
+      <config projectName="cps_vision" targetName="roscpp_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="tests" />
+      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="clean_test_results" />
+      <config projectName="cps_vision" targetName="geometry_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="roscpp_generate_messages_nodejs" />
+      <config projectName="cps_vision" targetName="uuid_msgs_generate_messages_lisp" />
+      <config projectName="cps_vision" targetName="gtest" />
+      <config projectName="cps_vision" targetName="std_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_py" />
+      <config projectName="cps_vision" targetName="std_msgs_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="rosgraph_msgs_generate_messages_eus" />
+      <config projectName="cps_vision" targetName="_catkin_empty_exported_target" />
+      <config projectName="cps_vision" targetName="cps_vision_lib" />
+      <config projectName="cps_vision" targetName="cwru_opencv_common_generate_messages_cpp" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -67,26 +67,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5af087c3-02d6-4e92-9828-76207c59a5b2" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/1.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/0.jpg" afterPath="$PROJECT_DIR$/samples/0.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/10.jpg" afterPath="$PROJECT_DIR$/samples/10.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/11.jpg" afterPath="$PROJECT_DIR$/samples/11.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/12.jpg" afterPath="$PROJECT_DIR$/samples/12.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/13.jpg" afterPath="$PROJECT_DIR$/samples/13.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/14.jpg" afterPath="$PROJECT_DIR$/samples/14.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/15.jpg" afterPath="$PROJECT_DIR$/samples/15.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/16.jpg" afterPath="$PROJECT_DIR$/samples/16.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/17.jpg" afterPath="$PROJECT_DIR$/samples/17.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/18.jpg" afterPath="$PROJECT_DIR$/samples/18.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/19.jpg" afterPath="$PROJECT_DIR$/samples/19.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/2.jpg" afterPath="$PROJECT_DIR$/samples/2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/3.jpg" afterPath="$PROJECT_DIR$/samples/3.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/4.jpg" afterPath="$PROJECT_DIR$/samples/4.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/5.jpg" afterPath="$PROJECT_DIR$/samples/5.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/6.jpg" afterPath="$PROJECT_DIR$/samples/6.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/7.jpg" afterPath="$PROJECT_DIR$/samples/7.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/8.jpg" afterPath="$PROJECT_DIR$/samples/8.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/9.jpg" afterPath="$PROJECT_DIR$/samples/9.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/include/cps_vision/cps_vision.h" afterPath="$PROJECT_DIR$/include/cps_vision/cps_vision.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cps_vision.cpp" afterPath="$PROJECT_DIR$/src/cps_vision.cpp" />
@@ -106,8 +86,8 @@
       <file leaf-file-name="cps_vision.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cps_vision.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+            <state relative-caret-position="292">
+              <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
               <folding>
                 <element signature="e#0#60#0" expanded="true" />
               </folding>
@@ -118,8 +98,8 @@
       <file leaf-file-name="cps_vision.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/cps_vision/cps_vision.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-792">
-              <caret line="16" column="52" lean-forward="true" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
+            <state relative-caret-position="294">
+              <caret line="88" column="40" lean-forward="true" selection-start-line="88" selection-start-column="40" selection-end-line="88" selection-end-column="40" />
               <folding>
                 <element signature="e#1827#1845#0" expanded="true" />
               </folding>
@@ -130,8 +110,8 @@
       <file leaf-file-name="pic_collection.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pic_collection.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-72">
-              <caret line="14" column="73" lean-forward="false" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
+            <state relative-caret-position="-87">
+              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -142,8 +122,8 @@
       <file leaf-file-name="cps_vision_main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cps_vision_main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="49" column="38" lean-forward="true" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+            <state relative-caret-position="777">
+              <caret line="98" column="7" lean-forward="true" selection-start-line="98" selection-start-column="7" selection-end-line="98" selection-end-column="7" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -167,6 +147,7 @@
       <find>match</find>
       <find>blueImage</find>
       <find>findShape</find>
+      <find>freshCameraInfo</find>
     </findStrings>
     <replaceStrings>
       <replace>orientation</replace>
@@ -184,9 +165,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/IPlImage.h" />
-        <option value="$PROJECT_DIR$/src/cps_vision.cpp" />
-        <option value="$PROJECT_DIR$/include/cps_vision/cps_vision.h" />
         <option value="$PROJECT_DIR$/src/pic_collection.cpp" />
+        <option value="$PROJECT_DIR$/include/cps_vision/cps_vision.h" />
+        <option value="$PROJECT_DIR$/src/cps_vision.cpp" />
         <option value="$PROJECT_DIR$/src/cps_vision_main.cpp" />
       </list>
     </option>
@@ -523,7 +504,7 @@
       <updated>1525880737499</updated>
       <workItem from="1525880738634" duration="45732000" />
       <workItem from="1526003921726" duration="26674000" />
-      <workItem from="1526249337146" duration="694000" />
+      <workItem from="1526249337146" duration="2797000" />
     </task>
     <task id="LOCAL-00001" summary="version1_5/9">
       <created>1525901884630</created>
@@ -543,7 +524,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84806000" />
+    <option name="totallyTimeSpent" value="86909000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2212" y="24" width="1857" height="1092" extended-state="6" />
@@ -827,30 +808,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cover2.jpg" />
     <entry file="file://$PROJECT_DIR$/1.jpg" />
-    <entry file="file://$PROJECT_DIR$/src/cps_vision.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/cps_vision/cps_vision.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-792">
-          <caret line="16" column="52" lean-forward="true" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
+        <state relative-caret-position="294">
+          <caret line="88" column="40" lean-forward="true" selection-start-line="88" selection-start-column="40" selection-end-line="88" selection-end-column="40" />
           <folding>
             <element signature="e#1827#1845#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/cps_vision.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pic_collection.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-72">
-          <caret line="14" column="73" lean-forward="false" selection-start-line="14" selection-start-column="73" selection-end-line="14" selection-end-column="73" />
+        <state relative-caret-position="-87">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
@@ -859,8 +840,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cps_vision_main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="49" column="38" lean-forward="true" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+        <state relative-caret-position="777">
+          <caret line="98" column="7" lean-forward="true" selection-start-line="98" selection-start-column="7" selection-end-line="98" selection-end-column="7" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>

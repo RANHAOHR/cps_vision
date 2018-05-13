@@ -21,14 +21,13 @@ CPSVision::CPSVision(ros::NodeHandle *nodehandle):
     R_mat = cv::Mat::zeros(3, 3, CV_64FC1);
     T_mat = cv::Mat::zeros(3, 1, CV_64FC1);
     G1_mat = cv::Mat::eye(4,4, CV_64FC1);
-    G2_mat = cv::Mat::eye(4,4, CV_64FC1);
+    G2_mat = cv::Mat::eye(4,4, CV_64FC1); ////currently not used
 
     Gc_mat = (cv::Mat_<double>(4,4) << 0,   1,   0,   0,
-	    					  1,    0,   0,    0.000,
-	    					  0,   0,   -1,    -0.04,
-	    						0, 	   0,  0, 	1);
+	    					  -1,    0,   0,    0.0,
+	    					  0,   0,   1,    0.04,
+	    						0, 	   0,  0, 	1); //some rough number for translation
 
-    freshCameraInfo = false;
     freshpose = false;
 
 };
@@ -143,7 +142,7 @@ bool CPSVision::matchPattern(std::string filenames,const cv::Mat &rawImg){
         cv::Mat match_mat;
         cv::drawMatches(targetImg, keypoints_1,rawImg,keypoints_2,matches_filtered,match_mat);
         imshow("matches image", match_mat);
-        cv::waitKey(10);
+//        cv::waitKey(10);
     }else{
         match = false;
     }
@@ -167,7 +166,7 @@ bool CPSVision::findShape(const cv::Mat &blueImage){
         drawContours( drawing, contours, i, color, 2, 8, hierarchy, 0, Point() );
     }
     imshow("Draw", drawing);
-    waitKey();
+//    waitKey(10);
     for(int i = 0; i < contours.size();i++){
         ROS_INFO_STREAM("CONTOUR:"<<contours.size());
         approxPolyDP(cv::Mat(contours[i]),approx, cv::arcLength(cv::Mat(contours[i]),true)*0.01, true);
