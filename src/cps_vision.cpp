@@ -3,6 +3,8 @@
 
 using namespace std;
 using namespace cv;
+RNG rng(12345);
+
 CPSVision::CPSVision(ros::NodeHandle *nodehandle):
         node_handle(*nodehandle){
     projectionMat_subscriber = node_handle.subscribe("/camera/rgb/camera_info", 1, &CPSVision::projectionMatCB, this);
@@ -151,6 +153,32 @@ bool CPSVision::matchPattern(std::string filenames,const cv::Mat &rawImg){
     P1_mat = position_pixel.clone();
 
     return match;
+}
+
+bool CPSVision::findShape(const cv::Mat &blueImage){
+    vector<vector<Point> > contours;
+    vector<Point> approx;
+    vector<Vec4i> hierarchy;
+    cv::findContours(blueImage, contours,  hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, Point(0, 0));
+    cv::Mat drawing = cv::Mat::zeros(480, 640, CV_8UC3);
+    for( int i = 0; i< contours.size(); i++ )
+    {
+        Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
+        drawContours( drawing, contours, i, color, 2, 8, hierarchy, 0, Point() );
+    }
+    imshow("Draw", drawing);
+    waitKey();
+    for(int i = 0; i < contours.size();i++){
+        ROS_INFO_STREAM("CONTOUR:"<<contours.size());
+        approxPolyDP(cv::Mat(contours[i]),approx, cv::arcLength(cv::Mat(contours[i]),true)*0.01, true);
+        if(approx.size() > 10 && approx.size() <= 14){
+            ROS_INFO_STREAM("Cross!" << approx.size());
+            return true;
+        }
+    }
+
+    ROS_INFO_STREAM("NOT Cross! The number is:" << approx.size());
+    return false;
 }
 
 
