@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
     /***
      * for debugging and field testing
      */
-    raw_image = imread("/home/ranhao/ros_ws/src/cps_vision/samples/1"
+    raw_image = imread("/home/ranhao/ros_ws/src/cps_vision/samples/2"
                                ".jpg",IMREAD_COLOR);
     Size size(480, 640);
     resize(raw_image,raw_image,size);

@@ -86,7 +86,7 @@ private:
     ros::Subscriber pose_subscriber;
 
     /**
-     * @brief get P_right from subsriber
+     * @brief get Projection matrix from subsriber
      * @param projectionRight
      */
     void projectionMatCB(const sensor_msgs::CameraInfo::ConstPtr &projectionRight);
